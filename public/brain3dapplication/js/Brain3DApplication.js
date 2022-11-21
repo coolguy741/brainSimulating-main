@@ -85,7 +85,8 @@ Brain3DApplication.prototype = {
 
   // form calls this function with answer 18-35
   question1Sum: function (value) {
-    this.question1Score = 1 - ((value - 18) / 72) * 0.3;
+    if (value <= 35) this.question1Score = 1 - (0.2 * (value - 18)) / 17;
+    else this.question1Score = 0.8 - 0.5 * [(value - 35) / 55] ** 2;
     this.calculateTotalAndApply();
   },
 
@@ -97,36 +98,30 @@ Brain3DApplication.prototype = {
 
   // form calls this function with answer 0-40
   question3Sum: function (value) {
-    this.question3Score = value / 40;
+    this.question3Score = (value / 40) ** 2;
     this.calculateTotalAndApply();
   },
 
   // form calls this function with answer 1 or 0.5 or 0
   question4Sum: function (value) {
-    this.question4Score = 1 - value;
+    this.question4Score = 1 - value * 0.5;
     this.calculateTotalAndApply();
   },
 
   // form calls this function with answer 1 or 0.5 or 0
   question5Sum: function (value) {
-    console.log("asdf", value);
     this.question5Score = value;
     this.calculateTotalAndApply();
   },
 
   calculateTotalAndApply: function () {
-    var percentTotal =
-      (((this.question2Score +
-        this.question3Score +
-        this.question4Score +
-        this.question5Score) *
-        this.weightHigh) /
-        (this.weightHigh * 4)) *
-        this.question1Score *
-        99.9 +
-      0.1;
-    console.log("PercentTotal", percentTotal);
-    this.updateBrainSection(percentTotal / 100);
+    this.updateBrainSection(
+      this.question1Score,
+      this.question2Score,
+      this.question3Score,
+      this.question4Score,
+      this.question5Score
+    );
   },
   updateBrainZoom(zoomValue, animationTime) {
     if (animationTime) {
@@ -188,7 +183,9 @@ Brain3DApplication.prototype = {
     }
   },
 
-  updateBrainSection: function (value) {
+  updateBrainSection: function (s1, s2, s3, s4, s5) {
+    value = (s1 + s2 + s3 + s4 + s5) / 5;
+
     if (this.babylonScene.brainIdleAnimation) {
       this.babylonScene.brainIdleAnimation.revert();
     }
@@ -198,15 +195,39 @@ Brain3DApplication.prototype = {
     }
     if (!this.ready) return;
     this.influence = value;
-    var duration = 0.175 - 0.125 * this.influence;
+    var duration = 0.175 - (0.125 * (s2 + s3 + s5) * s1 * s4) / 3;
     var overlap = duration * 0.9;
     var overlapString = "-=" + overlap;
     if (this.glowTween) {
       this.glowTween.kill();
     }
     this.glowTween = gsap.timeline({ repeat: -1 });
+    console.log("brainSelection", this.brainSectionData);
     for (var prop in this.brainSectionData) {
+      // "amygdala",
+      // "hippocampus",
+      // "nucleus_accumbens",
+      // "striatum",
+      // "medial_prefrontal_cortex",
+      // "dorsolateral_prefrontal_cortex",
       let item = this.brainSectionData[prop];
+
+      let brightness = 0;
+      if (
+        prop == "amygdala" ||
+        prop == "hippocampus" ||
+        prop == "nucleus_accumbens"
+      ) {
+        brightness = 0.5 + (s2 + s3 + s5) / 6;
+      } else if (prop == "striatum") {
+        brightness = 0.002 + (s5 ** 2 * 0.96 + (s2 + s3) * 0.02) * s1 * s4;
+      } else if (prop == "medial_prefrontal_cortex") {
+        brightness = 0.002 + (s3 ** 2 * 0.96 + (s2 + s5) * 0.02) * s1 * s4;
+      } else if (prop == "dorsolateral_prefrontal_cortex") {
+        brightness = 0.002 + (s2 ** 2 * 0.96 + (s3 + s5) * 0.02) * s1 * s4;
+      }
+      console.log(s1, s2, s3, s4, s5);
+
       item.material.emissiveIntensity = this.influence * 0.1;
       if (item.handleNodeVisibilityWithEffect) {
         item.material.alpha = 0;
@@ -214,7 +235,7 @@ Brain3DApplication.prototype = {
           item.material,
           {
             alpha: 0.8,
-            emissiveIntensity: this.influence * item.emmissiveScalar * 0.05,
+            emissiveIntensity: brightness * item.emmissiveScalar * 0.5,
             duration: duration,
             ease: Linear,
             yoyo: true,
@@ -226,7 +247,7 @@ Brain3DApplication.prototype = {
         this.glowTween.to(
           item.material,
           {
-            emissiveIntensity: this.influence * item.emmissiveScalar * 0.05,
+            emissiveIntensity: brightness * item.emmissiveScalar * 0.5,
             duration: duration,
             ease: Linear,
             yoyo: true,
