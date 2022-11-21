@@ -11,10 +11,10 @@ const Wrapper = styled.div`
 `
 
 export const QuestionComponents = ({ setSubName }: any) => {
-    const [ ageValue, setAgeValue ] = useState(0)
-    const [ firstSawValue, setFirstSawValue ] = useState(0)
+    const [ ageValue, setAgeValue ] = useState(17)
+    const [ firstSawValue, setFirstSawValue ] = useState(25)
     const [ watchHrsValue, setWatchHrsValue ] = useState(0)
-    const [ hardcoreValue, setHardcoreValue ] = useState(0)
+    const [ hardcoreValue, setHardcoreValue ] = useState(2)
     const [ agitatedValue, setAgitatedValue ] = useState(0)
 
     useEffect(() => {
