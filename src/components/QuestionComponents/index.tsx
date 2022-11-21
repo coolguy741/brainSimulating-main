@@ -31,12 +31,6 @@ export const QuestionComponents = ({ setSubName }: any) => {
         <Wrapper>
             <div className="z-20 flex flex-col justify-center h-full relative">
                 <QuestionComponent
-                    info={questionInfo[0]}
-                    value={ageValue}
-                    setValue={(val: any) => setAgeValue(val)}
-                />
-
-                <QuestionComponent
                     info={questionInfo[1]}
                     value={firstSawValue}
                     setValue={(val: any) => setFirstSawValue(val)}
@@ -58,6 +52,12 @@ export const QuestionComponents = ({ setSubName }: any) => {
                     info={questionInfo[4]}
                     value={agitatedValue}
                     setValue={(val: any) => setAgitatedValue(val)}
+                />
+
+                <QuestionComponent
+                    info={questionInfo[0]}
+                    value={ageValue}
+                    setValue={(val: any) => setAgeValue(val)}
                 />
 
                 <div className="ml-4">
