@@ -1,0 +1,221 @@
+$font-family:  'Roboto', sans-serif;
+$ease-in-out-sine: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+
+@font-face {
+    font-family: 'TheSans';
+    src: local('TheSans'),
+         url('../assets/fonts/thesans-2-cufonfonts/TheSans Plain.otf') format('opentype'), /* Super Modern Browsers */
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: local('Roboto'),
+         url('../assets/fonts/Roboto/Roboto-Regular.ttf') format('truetype'), /* Super Modern Browsers */
+}
+
+@font-face {
+    font-family: 'Utility';
+    src: local('Utility'),
+         url('../assets/fonts/Utility/UTILITY.ttf') format('truetype'), /* Super Modern Browsers */
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+.App {
+    font-family: 'Roboto';
+    min-height: 100vh;
+    min-width: 100vw;
+    height: 100%;
+
+    background-color: #FC31DA;
+}
+
+.container {
+    padding: 2rem;
+
+    @media (max-width: 1280px) {
+    }
+
+    @media (max-width: 1024px) {
+        
+    }
+
+    @media (max-width: 768px) {
+        padding: 1rem;
+    }
+}
+
+.font-Roboto {
+    font-family: 'Roboto';
+}
+
+.font-Utility {
+    font-family: 'Utility';
+}
+
+.bg-pink-500 {
+    background-color: #fc31da;
+}
+  
+.bg-cyan-300 {
+    background-color: #67e8f9;
+}
+  
+.text-cyan-300 {
+    color: #67e8f9;
+}
+  
+  
+// svg {
+//     width: 100%;
+//     height: auto;
+// }
+
+// Button
+@keyframes BTN-ARROW-PROMPT {
+    0% {
+      transform: translatex(0);
+    }
+    50% {
+      transform: translatex(4px);
+    }
+    100% {
+      transform: translatex(0);
+    }
+}
+
+[type=button].c-btn, [type=reset].c-btn, [type=submit].c-btn, button.c-btn, a.c-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-family:  $font-family;
+    white-space: nowrap;
+    background-color: #e5ff00;
+    color: black;
+    padding: 0.5rem 1.5rem;
+    border-radius: 2rem;
+    transition: background-color 0.3s $ease-in-out-sine, color 0.3s linear;
+  
+    &.no-top {
+      margin-top: 0 !important;
+    }
+  
+    span {
+      display: block;
+    }
+  
+    svg {
+      width: 24px;
+      height: 24px;
+      transition: transform 0.4s $ease-in-out-sine;
+    }
+  
+    &:hover,
+    &:focus {
+      background-color: black;
+      color: #e5ff00;
+  
+      svg {
+        animation: BTN-ARROW-PROMPT 1s ease-in-out infinite;
+        // transform: translatex(3px);
+      }
+    }
+  
+    .bg-pink-500 & {
+  
+      &:hover,
+      &:focus {
+        background-color: black;
+        color: #e5ff00;
+      }
+    }
+  
+    .bg-radial & {
+  
+      &:hover,
+      &:focus {
+        background-color: black;
+        color: #e5ff00;
+      }
+    }
+}
+
+.l-container {
+    // max-width: 1440px;
+    margin: 0 auto;
+}
+
+.f-hero {
+    font-size: 4.5rem; // fallback
+    font-size: clamp(1.5rem, 1.071rem + 2.14vw, 4.5rem);
+    line-height: 1.1;
+
+    &--xl {
+        font-size: 7.5rem; // fallback
+        font-size: clamp(1.5rem, 0.643rem + 4.29vw, 7.5rem);
+        line-height: 1.1;
+    }
+}
+
+.f-lead {
+    font-size: 1.75rem; // fallback
+    font-size: clamp(1rem, 0.893rem + 0.54vw, 1.75rem);
+    line-height: 1.25;
+}
+
+.f-underline-1 {
+    text-decoration-line: underline;
+    text-underline-offset: 4px; // fallback
+    text-decoration-thickness: 4px; // fallback
+    text-underline-offset:  .3ex;
+    text-decoration-thickness:  .3ex;
+    text-decoration-color: #67e8f9;
+}
+
+@keyframes SVG-LOGO-FILL-STROKE {
+    0% {
+      fill: #e5ff00;
+      stroke: #e5ff00;
+    }
+    25% {
+      fill: #000;
+      stroke: #000;    
+    }
+    50% {
+      fill: #e5ff00;
+      stroke: #e5ff00;
+    }
+    75% {
+      fill: #67e8f9;
+      stroke: #67e8f9;
+    }
+    100% {
+      fill: #e5ff00;
+      stroke: #e5ff00;
+    }
+  }
+  
+@keyframes TEXT-LOGO-COLOR {
+    0% {
+      color: #e5ff00;
+      letter-spacing: .05em;
+    }
+    25% {
+      color: #000;
+      letter-spacing: -.025em;
+    }
+    50% {
+      color: #e5ff00;
+      letter-spacing: .05em;
+    }
+    75% {
+      color: #67e8f9;
+      letter-spacing: -.025em;
+    }
+    100% {
+      color: #e5ff00;
+      letter-spacing: .05em;
+    }
+}

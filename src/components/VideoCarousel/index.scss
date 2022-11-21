@@ -1,0 +1,45 @@
+// Video Carousel 
+
+.swiper-carousel {
+    position: relative;
+    margin: 0 auto;
+    max-width: 100%;
+    overflow: hidden;
+    padding-bottom: 3rem;
+  }
+  .swiper-carousel, .swiper-slide {
+    position: relative;
+    max-width: 100%; 
+ 
+    .swiper-slide__video {
+      transition: all 0.3s linear;
+      filter: blur(2px);
+    }
+  
+    &.swiper-slide-active{
+      .swiper-slide__video {
+        filter: blur(0px);
+      } 
+    }
+  }
+  
+  .swiper-button-next, .swiper-button-prev {
+    transition: color 0.3s ease-in-out;
+    color: white;
+  
+    &:hover {
+      color: #fc31da;
+    }
+  }
+  .swiper-pagination  {
+    bottom: 0;  
+  }
+  
+  .swiper-pagination-bullet {
+    opacity: 1;
+    background: white;
+    transition: background 0.3s ease-in-out;
+    &-active {
+      background: #fc31da;
+    }
+  }

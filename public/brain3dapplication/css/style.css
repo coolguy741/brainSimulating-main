@@ -1,0 +1,32 @@
+html {
+    height: 100%;
+  }
+  body {
+    min-height: 100%;
+    margin: 0;
+    overflow: hidden;
+  }
+
+
+#content {
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  margin: 0;
+  border: none;
+  padding: 0;
+}
+
+#render-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+#inspector-host {
+    position: absolute !important;  
+}
+
+#scene-explorer-host {
+    position: absolute !important;  
+}

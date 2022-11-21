@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Brain Simulating Application"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>Brain Simulation</title>
+
+    <script src="%PUBLIC_URL%/brain3dapplication/libs/babylon.js"></script>
+    <script src="%PUBLIC_URL%/brain3dapplication/libs/babylonjs.loaders.min.js"></script>
+    <script src="%PUBLIC_URL%/brain3dapplication/libs/popper.min.js"></script>
+    <script src="%PUBLIC_URL%/brain3dapplication/libs/gsap.min.js"></script>
+    <script src="%PUBLIC_URL%/brain3dapplication/libs/babylonjs.postProcess.min.js"></script>
+    <script src="%PUBLIC_URL%/brain3dapplication/libs/babylon.inspector.bundle.js"></script>
+
+    <script
+      type="text/javascript"
+      src="%PUBLIC_URL%/brain3dapplication/js/EventNames.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="%PUBLIC_URL%/brain3dapplication/js/PublishSubscribe.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="%PUBLIC_URL%/brain3dapplication/js/BabylonScene.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="%PUBLIC_URL%/brain3dapplication/js/Brain3DApplication.js"
+    ></script>
+
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root" class="h-full"></div>
+
+    <script type="text/javascript">
+      window.brain3DApplication = null;
+      window.eventNames = EventNames;
+
+      window.addEventListener("DOMContentLoaded", function (event) {
+        //create the application
+        brain3DApplication = new Brain3DApplication();
+      });
+    </script>
+  </body>
+</html>
