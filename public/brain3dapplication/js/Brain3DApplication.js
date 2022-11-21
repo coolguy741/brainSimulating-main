@@ -85,7 +85,7 @@ Brain3DApplication.prototype = {
 
   // form calls this function with answer 18-35
   question1Sum: function (value) {
-    this.question1Score = 1 - ((value - 18) / 17) * 0.3;
+    this.question1Score = 1 - ((value - 18) / 72) * 0.3;
     this.calculateTotalAndApply();
   },
 
@@ -214,7 +214,7 @@ Brain3DApplication.prototype = {
           item.material,
           {
             alpha: 0.8,
-            emissiveIntensity: this.influence * item.emmissiveScalar,
+            emissiveIntensity: this.influence * item.emmissiveScalar * 0.05,
             duration: duration,
             ease: Linear,
             yoyo: true,
@@ -226,7 +226,7 @@ Brain3DApplication.prototype = {
         this.glowTween.to(
           item.material,
           {
-            emissiveIntensity: this.influence * item.emmissiveScalar,
+            emissiveIntensity: this.influence * item.emmissiveScalar * 0.05,
             duration: duration,
             ease: Linear,
             yoyo: true,
