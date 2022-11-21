@@ -49,8 +49,8 @@ export const ResultContent = ({ first, setSubName }: any) => {
 
     return (
         <div className="h-screen | flex flex-col | p-6">
-            <Wrapper className="z-10 mt-auto ml-auto mb-auto">
-                <p className="contentText font-bold">
+            <Wrapper className="z-10 ml-auto mb-auto">
+                <p className="contentText font-base">
                     { first ? (
                         'This is a simulation of your brain’s activity when you are watching pornography. The parts lighting up are the dopamine rewards system which are activated when you experience something you find pleasurable and rewarding.'
                     ) : (
