@@ -220,11 +220,11 @@ Brain3DApplication.prototype = {
       ) {
         brightness = 0.5 + (s2 + s3 + s5) / 6;
       } else if (prop == "striatum") {
-        brightness = 0.002 + (s5 ** 2 * 0.96 + (s2 + s3) * 0.02) * s1 * s4;
+        brightness = 0.002 + (s5 ** 3 * 0.99 + (s2 + s3) * 0.005) * s1 * s4;
       } else if (prop == "medial_prefrontal_cortex") {
-        brightness = 0.002 + (s3 ** 2 * 0.96 + (s2 + s5) * 0.02) * s1 * s4;
+        brightness = 0.002 + (s3 ** 3 * 0.99 + (s2 + s5) * 0.005) * s1 * s4;
       } else if (prop == "dorsolateral_prefrontal_cortex") {
-        brightness = 0.002 + (s2 ** 2 * 0.96 + (s3 + s5) * 0.02) * s1 * s4;
+        brightness = 0.002 + (s2 ** 3 * 0.99 + (s3 + s5) * 0.005) * s1 * s4;
       }
       console.log(s1, s2, s3, s4, s5);
 
