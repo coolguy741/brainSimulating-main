@@ -51,38 +51,60 @@ export const Brain = () => {
     const [ subName, setSubName ] = useState('question')
 
     return (
-        <Container className={`w-full h-full`}>
-            <Header />
+        <div>
+            <Container className={`w-full h-full bg-transparent z-50`}>
+                    <Header />
 
-            <Scene setLoadComplete={ () => setLoadComplete(true) } />
+                    <Scene setLoadComplete={ () => setLoadComplete(true) } />
 
-            { !loadComplete ? (
-                <LoaderWrapper className={'h-full | flex flex-col | p-6'}>
-                    <BackDrop className="fixed top-0 left-0 w-full h-full z-10" />
-                    <Loader />
-                </LoaderWrapper>
+                    { !loadComplete ? (
+                        <LoaderWrapper className={'h-full | flex flex-col | p-6'}>
+                            <BackDrop className="fixed top-0 left-0 w-full h-full z-10" />
+                            <Loader />
+                        </LoaderWrapper>
+                    ) : (
+                        <div className="w-full h-full">
+                            { subName === 'question' ? (
+                                <QuestionComponents setSubName={(val: any) => setSubName(val)} />
+                            ) : subName === 'result1' ? (
+                                <ResultContent 
+                                    setSubName={(val: any) => setSubName(val)}
+                                    first={true}
+                                />
+                            ) : subName === 'result2' ? (
+                                <ResultContent 
+                                    setSubName={(val: any) => setSubName(val)}
+                                    first={false}
+                                />
+                            ) : subName === 'discover' ? (
+                                <Discover setSubName={(val: any) => setSubName(val)} />
+                            ) : subName === 'video' ? (
+                                <VideoCarousel />
+                            ) : null }
+                        </div>
+                    ) }
+            </Container>
+            { subName === 'discover' || subName === 'video'  ? (
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    className="absolute top-0 z-10 w-auto min-w-full min-h-full max-w-none"
+                >
+                    <source src='/assets/movies/Background6.mov' type="video/mp4"/>
+                </video>
             ) : (
-                <div className="w-full h-full">
-                    { subName === 'question' ? (
-                        <QuestionComponents setSubName={(val: any) => setSubName(val)} />
-                    ) : subName === 'result1' ? (
-                        <ResultContent 
-                            setSubName={(val: any) => setSubName(val)}
-                            first={true}
-                        />
-                    ) : subName === 'result2' ? (
-                        <ResultContent 
-                            setSubName={(val: any) => setSubName(val)}
-                            first={false}
-                        />
-                    ) : subName === 'discover' ? (
-                        <Discover setSubName={(val: any) => setSubName(val)} />
-                    ) : subName === 'video' ? (
-                        <VideoCarousel />
-                    ) : null }
-                </div>
-            ) }
-        </Container>
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    className="absolute top-0 z-0 w-auto min-w-full min-h-full max-w-none"
+                >
+                    <source src='/assets/movies/Background6.mov' type="video/mp4"/>
+                </video>
+            )
+            }
+        </div>
     )
 }
 

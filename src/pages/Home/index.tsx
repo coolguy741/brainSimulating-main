@@ -24,7 +24,7 @@ export const Home = () => {
                 autoPlay
                 loop
                 muted
-                className="absolute top-0 z-1 w-auto min-w-full min-h-full max-w-none "
+                className="absolute top-0 z-10 w-auto min-w-full min-h-full max-w-none "
             >
                 <source src='/assets/movies/Background6.mov' type="video/mp4"/>
             </video>
