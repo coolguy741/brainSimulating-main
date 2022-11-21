@@ -29,7 +29,7 @@ export const Discover = ({ setSubName }: any) => {
         <Wrapper className={`fixed top-0 left-0 z-50 w-screen h-screen flex flex-col p-6 bg-transparent`}>
             <div className="mt-auto mb-auto">
                 <div className="l-container">
-                    <h2 className="text-md font-medium text-black z-50">Did you know that watching porn frequently can other areas of your life?</h2>
+                    <p className="text-5xl font-medium text-white leading-[4rem] z-50">Did you know that watching porn frequently can other areas of your life?</p>
                     <ArrowButton onClickCallback={ onClickDiscover }>
                         FIND OUT MORE
                     </ArrowButton>
