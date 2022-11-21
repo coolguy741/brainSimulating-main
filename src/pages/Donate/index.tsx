@@ -20,7 +20,6 @@ export const Donate = () => {
                         <div className="l-container | relative">
                             <h2 className="f-hero f-hero--xl font-bold mb-6">Donate your brain<sup>*</sup> to help research into pornography <span className="f-underline-1 font-bold">addiction</span></h2>
                             <small className="block">* DISCLAIMER: xxxxxxxxxx</small>
-
                             <ArrowButton>
                                 Discover your brain
                             </ArrowButton>
@@ -28,8 +27,6 @@ export const Donate = () => {
                     </div>
                 </div>
             </div>
-
-            
         </Wrapper>
     )
 }

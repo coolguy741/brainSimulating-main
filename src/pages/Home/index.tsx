@@ -11,10 +11,10 @@ const Wrapper = styled.div`
 
 export const Home = () => {
     return (
-        <div>
-            <Wrapper className={`w-screen h-screen`}>
+        <div className=''>
+            <Wrapper className={`w-screen h-screen bg-transparent`}>
                 <div className='w-full h-full mx-auto p-6'>
-                    <div className='w-full h-full relative'>
+                    <div className='w-full h-full relative z-50'>
                         <Header />
                         <Intro/>
                     </div>
@@ -24,7 +24,7 @@ export const Home = () => {
                 autoPlay
                 loop
                 muted
-                className="absolute z-1 w-auto min-w-full min-h-full max-w-none "
+                className="absolute top-0 z-10 w-auto min-w-full min-h-full max-w-none "
             >
                 <source src='/assets/movies/Background6.mov' type="video/mp4"/>
             </video>

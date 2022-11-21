@@ -37,7 +37,7 @@ export const VideoCarousel = () => {
     }
 
     return (
-        <Wrapper className={`fixed top-0 left-0 z-10 w-screen h-screen flex flex-col justify-center items-center p-6`}>
+        <Wrapper className={`fixed top-0 left-0 z-50 w-screen h-screen flex flex-col justify-center items-center p-6`}>
             <div className="l-container | relative text-center">
                 <Swiper
                     centeredSlides

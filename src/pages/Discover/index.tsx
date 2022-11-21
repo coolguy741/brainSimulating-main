@@ -6,7 +6,6 @@ import Scene from "../../components/Scene"
 import { ArrowButton } from "../../theme/components"
 
 const Wrapper = styled.div`
-    background-color: #6cefff;
 
     .l-container {
         width: 65%;
@@ -30,11 +29,10 @@ export const Discover = ({ setSubName }: any) => {
     }
 
     return (
-        <Wrapper className={`fixed top-0 left-0 z-10 w-screen h-screen flex flex-col p-6`}>
+        <Wrapper className={`fixed top-0 left-0 z-50 w-screen h-screen flex flex-col p-6 bg-transparent`}>
             <div className="mt-auto mb-auto">
                 <div className="l-container">
-                    <h2 className="f-hero f-hero--xl font-bold text-black mb-6">Did you know that watching porn frequently can other areas of your life?</h2>
-
+                    <h2 className="f-hero f-hero--xl font-bold text-black mb-6 z-50">Did you know that watching porn frequently can other areas of your life?</h2>
                     <ArrowButton onClickCallback={ onClickDiscover }>
                         FIND OUT MORE
                     </ArrowButton>

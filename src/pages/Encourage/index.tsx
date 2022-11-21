@@ -44,25 +44,36 @@ const ContentWrapper = styled.div`
 
 export const Encourage = () => {
     return (
-        <Wrapper className={`w-screen h-screen`}>
-            <div className='w-full h-full mx-auto p-6'>
-                <div className='w-full h-full relative'>
-                    <Header />
-                    
-                    <IntroWrapper className={`relative mt-auto mb-auto font-Roboto flex justify-center items-center w-full h-full p-8`}>
-                        <div className="l-container relative w-full">
-                            <ContentWrapper>
-                                <h1 className="f-hero font-bold text-black mb-16">Reducing your porn intake could lead to a new lease on life.</h1>
+        <div>
+            <Wrapper className={`w-screen h-screen`}>
+                <div className='w-full h-full mx-auto p-6'>
+                    <div className='w-full h-full relative'>
+                        <Header />
+                        
+                        <IntroWrapper className={`relative mt-auto mb-auto font-Roboto flex justify-center items-center w-full h-full p-8 z-50`}>
+                            <div className="l-container relative w-full">
+                                <ContentWrapper>
+                                    <h1 className="f-hero font-bold text-black mb-16">Reducing your porn intake could lead to a new lease on life.</h1>
 
-                                <Link to={'/end'}>
-                                    <ChevronDown size={200} fontSize={20} />
-                                </Link>
-                            </ContentWrapper>
-                        </div>
-                    </IntroWrapper>
+                                    <Link to={'/end'}>
+                                        <ChevronDown size={200} fontSize={20} />
+                                    </Link>
+                                </ContentWrapper>
+                            </div>
+                        </IntroWrapper>
+                    </div>
                 </div>
-            </div>
-        </Wrapper>       
+            </Wrapper>
+            <video
+                autoPlay
+                loop
+                muted
+                className="absolute top-0 z-0 w-auto min-w-full min-h-full max-w-none "
+            >
+                <source src='/assets/movies/Background6.mov' type="video/mp4"/>
+            </video>
+        </div>
+              
     )
 }
 
