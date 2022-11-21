@@ -16,7 +16,7 @@ import CSSTransitionGroup from 'react-addons-css-transition-group';
 
 const BackDrop = styled.div`
     background-color: #ef1023;
-    background-image: url('/assets/images/Brain background.png');
+    background-image: url('/assets/images/Brain_CU.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
