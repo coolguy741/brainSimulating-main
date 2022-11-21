@@ -44,7 +44,7 @@ const targetColor = {
     B: 0
 }
 
-export const RangeInput = ( { min, max, rangeMin, value, setValue, step = 1, disable = false, colorful = false }: any ) => {
+export const RangeInput = ( { min, max, rangeMin, value, setValue, step = 1, disable = false, colorful = false, positive = true }: any ) => {
     const toHex = (value: number) => {
         let hex = parseInt(value.toString()).toString(16);
         if(hex.length === 1)
@@ -54,15 +54,15 @@ export const RangeInput = ( { min, max, rangeMin, value, setValue, step = 1, dis
 
     const getColor = (value: number) => {
         let percent = (value - min) / (max - min);
+        if(!positive) percent = 1 - percent;
         if(!colorful) percent = 0;
         const color = {
             R: initialColor.R + (targetColor.R - initialColor.R) * percent,
             G: initialColor.G + (targetColor.G - initialColor.G) * percent,
             B: initialColor.B + (targetColor.B - initialColor.B) * percent
         };
-        const rgb = `#${toHex(color.R)}${toHex(color.G)}${toHex(color.B)}`;
-        console.log(rgb);
-        return rgb;
+        const hex = `#${toHex(color.R)}${toHex(color.G)}${toHex(color.B)}`;
+        return hex;
     }
 
     return (

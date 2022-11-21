@@ -35,6 +35,7 @@ export const QuestionComponents = ({ setSubName }: any) => {
                     value={firstSawValue}
                     setValue={(val: any) => setFirstSawValue(val)}
                     colorful={true}
+                    positive={false}
                 />
 
                 <QuestionComponent
