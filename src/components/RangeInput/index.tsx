@@ -45,6 +45,13 @@ const targetColor = {
 }
 
 export const RangeInput = ( { min, max, rangeMin, value, setValue, step = 1, disable = false, colorful = false }: any ) => {
+    const toHex = (value: number) => {
+        let hex = parseInt(value.toString()).toString(16);
+        if(hex.length === 1)
+            hex = `0${hex}`;
+        return hex;
+    }
+
     const getColor = (value: number) => {
         let percent = (value - min) / (max - min);
         if(!colorful) percent = 0;
@@ -53,7 +60,8 @@ export const RangeInput = ( { min, max, rangeMin, value, setValue, step = 1, dis
             G: initialColor.G + (targetColor.G - initialColor.G) * percent,
             B: initialColor.B + (targetColor.B - initialColor.B) * percent
         };
-        const rgb = `rgb(${color.R},${color.G},${color.B}`;
+        const rgb = `#${toHex(color.R)}${toHex(color.G)}${toHex(color.B)}`;
+        console.log(rgb);
         return rgb;
     }
 
@@ -84,7 +92,7 @@ export const RangeInput = ( { min, max, rangeMin, value, setValue, step = 1, dis
                                 borderRadius: "4px",
                                 background: getTrackBackground({
                                     values: [value],
-                                    colors: ["#e5ff00", "#e5ff00"],
+                                    colors: [getColor(value), "#e5ff00"],
                                     min: min,
                                     max: max
                                 }),
