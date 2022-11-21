@@ -6,7 +6,7 @@ export const questionInfo = [
         type: 'number',
         answer: {
             min: 18,
-            max: 90,
+            max: 35,
         }
     }, {
         text: `How old were you when you first saw porn?`,
