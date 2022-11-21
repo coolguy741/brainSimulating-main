@@ -1,17 +1,12 @@
-import { useEffect, useState } from "react"
-import { Route, Routes, useNavigate, useParams } from "react-router-dom"
+import { useState } from "react"
 import styled from "styled-components"
-import { questionInfo } from "../../constants"
-import Scene from "../Scene"
-import Loader from "../Loader"
-import useStore from "../../store"
-import ResultContent from "./resultContent"
-import Logo from "../Logo"
-import Header from "../Header"
 import Discover from "../../pages/Discover"
-import { VideoCarousel } from "../VideoCarousel"
+import Header from "../Header"
+import Loader from "../Loader"
 import QuestionComponents from "../QuestionComponents"
-import CSSTransitionGroup from 'react-addons-css-transition-group';
+import Scene from "../Scene"
+import { VideoCarousel } from "../VideoCarousel"
+import ResultContent from "./resultContent"
 
 
 const BackDrop = styled.div`
@@ -63,7 +58,7 @@ export const Brain = () => {
                             <Loader />
                         </LoaderWrapper>
                     ) : (
-                        <div className="w-full h-full">
+                        <div className="w-full h-full mt-12">
                             { subName === 'question' ? (
                                 <QuestionComponents setSubName={(val: any) => setSubName(val)} />
                             ) : subName === 'result1' ? (
