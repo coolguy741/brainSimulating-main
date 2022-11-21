@@ -11,10 +11,10 @@ const Wrapper = styled.div`
 
 export const Home = () => {
     return (
-        <div className='bg-transparent'>
-            <Wrapper className={`w-screen h-screen`}>
-                <div className='w-full h-full mx-auto p-6 z-99'>
-                    <div className='w-full h-full relative'>
+        <div className=''>
+            <Wrapper className={`w-screen h-screen bg-transparent`}>
+                <div className='w-full h-full mx-auto p-6'>
+                    <div className='w-full h-full relative z-50'>
                         <Header />
                         <Intro/>
                     </div>
