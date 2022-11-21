@@ -1,6 +1,5 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Range, getTrackBackground } from "react-range";
+import { getTrackBackground, Range } from "react-range";
+import styled from 'styled-components';
 
 const Wrapper = styled.div`
     max-width: 350px;
@@ -12,7 +11,6 @@ const Wrapper = styled.div`
     }
 
     .thumbValue {
-        color: #e5ff00;
         position: absolute;
         border-radius: 4px;
         left: 50%;
@@ -34,7 +32,39 @@ const MinMaxWrapper = styled.div`
     }
 `
 
-export const RangeInput = ( { min, max, rangeMin, value, setValue, step = 1, disable = false }: any ) => {
+const initialColor = {
+    R: 229,
+    G: 255,
+    B: 0
+};
+
+const targetColor = {
+    R: 255,
+    G: 0,
+    B: 0
+}
+
+export const RangeInput = ( { min, max, rangeMin, value, setValue, step = 1, disable = false, colorful = false }: any ) => {
+    const toHex = (value: number) => {
+        let hex = parseInt(value.toString()).toString(16);
+        if(hex.length === 1)
+            hex = `0${hex}`;
+        return hex;
+    }
+
+    const getColor = (value: number) => {
+        let percent = (value - min) / (max - min);
+        if(!colorful) percent = 0;
+        const color = {
+            R: initialColor.R + (targetColor.R - initialColor.R) * percent,
+            G: initialColor.G + (targetColor.G - initialColor.G) * percent,
+            B: initialColor.B + (targetColor.B - initialColor.B) * percent
+        };
+        const rgb = `#${toHex(color.R)}${toHex(color.G)}${toHex(color.B)}`;
+        console.log(rgb);
+        return rgb;
+    }
+
     return (
         <Wrapper className={ disable ? 'disable' : '' }>
             <Range
@@ -62,7 +92,7 @@ export const RangeInput = ( { min, max, rangeMin, value, setValue, step = 1, dis
                                 borderRadius: "4px",
                                 background: getTrackBackground({
                                     values: [value],
-                                    colors: ["#e5ff00", "#e5ff00"],
+                                    colors: [getColor(value), "#e5ff00"],
                                     min: min,
                                     max: max
                                 }),
@@ -81,7 +111,7 @@ export const RangeInput = ( { min, max, rangeMin, value, setValue, step = 1, dis
                             height: "20px",
                             width: "20px",
                             borderRadius: "100vw",
-                            backgroundColor: "#e5ff00",
+                            backgroundColor: getColor(value),
                             display: "flex",
                             justifyContent: "center",
                             alignItems: "center",
@@ -89,15 +119,10 @@ export const RangeInput = ( { min, max, rangeMin, value, setValue, step = 1, dis
                             outline: 'unset',
                         }}
                     >
-                        <span className='thumbValue'>{value + rangeMin}</span>
+                        <span style={{color: getColor(value)}} className='thumbValue'>{value + rangeMin}</span>
                     </div>
                 )}
             />
-            
-            <MinMaxWrapper className='flex justify-between items-center'>
-                <div className='min'><span>{min + rangeMin}</span></div>
-                <div className='max'><span>{max + rangeMin}</span></div>
-            </MinMaxWrapper>
         </Wrapper>
     )
 }
