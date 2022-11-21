@@ -10,7 +10,7 @@ export const Pages = () => {
 
     return (
         <PageTransition
-            preset={"fall"}
+            preset={"scaleDownScaleDown"}
             transitionKey={location.pathname}
             enterAnimation={""}
             exitAnimation={""}
