@@ -3,7 +3,7 @@ import styled from "styled-components"
 const LoaderWrapper = styled.div`
     position: absolute;
     transform: translate3d(-50%, -50%, 0);
-    top: 25%;
+    top: 50%;
     left: 50%;
 
     font-size: 60px;
