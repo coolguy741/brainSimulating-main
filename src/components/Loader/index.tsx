@@ -3,7 +3,7 @@ import styled from "styled-components"
 const LoaderWrapper = styled.div`
     position: absolute;
     transform: translate3d(-50%, -50%, 0);
-    top: 50%;
+    top: 25%;
     left: 50%;
 
     font-size: 60px;
@@ -46,10 +46,10 @@ const LoaderWrapper = styled.div`
 
 export const Loader = () => {
     return (
-        <LoaderWrapper className="text-center text-white flex flex-col justify-center items-center z-10">
+        <LoaderWrapper className="text-center text-white flex flex-col justify-center z-10">
             <img className="object-contain" alt="pic" src="/assets/images/logo_loading.gif" />
 
-            <h1>how does porn change your brain?</h1>
+            {/* <h1>how does porn change your brain?</h1> */}
         </LoaderWrapper>
     )
 }

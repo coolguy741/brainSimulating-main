@@ -53,8 +53,8 @@ export const Brain = () => {
     return (
         <div>
             <Container className={`w-full h-full bg-transparent z-50`}>
-                    <Header />
-
+                    {loadComplete ? (<Header />) : <></>}
+                    
                     <Scene setLoadComplete={ () => setLoadComplete(true) } />
 
                     { !loadComplete ? (
