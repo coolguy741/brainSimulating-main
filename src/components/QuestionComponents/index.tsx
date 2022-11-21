@@ -34,12 +34,14 @@ export const QuestionComponents = ({ setSubName }: any) => {
                     info={questionInfo[1]}
                     value={firstSawValue}
                     setValue={(val: any) => setFirstSawValue(val)}
+                    colorful={true}
                 />
 
                 <QuestionComponent
                     info={questionInfo[2]}
                     value={watchHrsValue}
                     setValue={(val: any) => setWatchHrsValue(val)}
+                    colorful={true}
                 />
 
                 <QuestionComponent

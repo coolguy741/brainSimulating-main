@@ -26,7 +26,7 @@ const RadioWrapper = styled.div`
     width: 300px;
 `
 
-export const QuestionComponent = ({ info, value, setValue } : any) => {
+export const QuestionComponent = ({ info, value, setValue, colorful = false } : any) => {
     return (
         <>
             <QuestionSelect className="text-center flex flex-col justify-center items-start py-2">
@@ -42,6 +42,7 @@ export const QuestionComponent = ({ info, value, setValue } : any) => {
                             value={value}
                             rangeMin={ (info.answer as any).min }
                             setValue={setValue}
+                            colorful={colorful}
                         />
                     </RangeWrapper>
                 ) : (
