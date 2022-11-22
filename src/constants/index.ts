@@ -20,7 +20,7 @@ export const questionInfo = [
         type: 'number',
         answer: {
             min: 0,
-            max: 40,
+            max: 15,
         }
     }, {
         text: `Would your taste in porn be considered hardcore?`,
