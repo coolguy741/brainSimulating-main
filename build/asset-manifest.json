@@ -1,16 +1,30 @@
 {
   "files": {
+<<<<<<< HEAD
     "main.css": "/static/css/main.eea47fdc.css",
     "main.js": "/static/js/main.d08650cd.js",
+=======
+    "main.css": "/static/css/main.691f2129.css",
+    "main.js": "/static/js/main.08f7e5bd.js",
+>>>>>>> 67a3e045a3d2183b84944cf4f9641c50522feb99
     "static/media/Roboto-Regular.ttf": "/static/media/Roboto-Regular.fc2b5060f7accec5cf74.ttf",
     "static/media/TheSans Plain.otf": "/static/media/TheSans Plain.91698183f27b3e8d106d.otf",
     "static/media/UTILITY.ttf": "/static/media/UTILITY.ae5b05636bd72f3119dc.ttf",
     "index.html": "/index.html",
+<<<<<<< HEAD
     "main.eea47fdc.css.map": "/static/css/main.eea47fdc.css.map",
     "main.d08650cd.js.map": "/static/js/main.d08650cd.js.map"
   },
   "entrypoints": [
     "static/css/main.eea47fdc.css",
     "static/js/main.d08650cd.js"
+=======
+    "main.691f2129.css.map": "/static/css/main.691f2129.css.map",
+    "main.08f7e5bd.js.map": "/static/js/main.08f7e5bd.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.691f2129.css",
+    "static/js/main.08f7e5bd.js"
+>>>>>>> 67a3e045a3d2183b84944cf4f9641c50522feb99
   ]
 }
