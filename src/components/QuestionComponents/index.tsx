@@ -4,11 +4,6 @@ import { questionInfo } from "../../constants"
 import { ArrowButton } from "../../theme/components"
 import QuestionComponent from "./component"
 
-const Wrapper = styled.div`
-    width: 40%;
-    height: 100%;
-    margin-left: 60%;
-`
 
 export const QuestionComponents = ({ setSubName }: any) => {
     const [ ageValue, setAgeValue ] = useState(72)
@@ -16,6 +11,7 @@ export const QuestionComponents = ({ setSubName }: any) => {
     const [ watchHrsValue, setWatchHrsValue ] = useState(0)
     const [ hardcoreValue, setHardcoreValue ] = useState(2)
     const [ agitatedValue, setAgitatedValue ] = useState(0)
+    const [ focusedControl, setFocusedControl ] = useState("none") 
 
     useEffect(() => {
         const brain3DApplication = (window as any).brain3DApplication
@@ -28,46 +24,76 @@ export const QuestionComponents = ({ setSubName }: any) => {
     }, [ageValue, firstSawValue, watchHrsValue, hardcoreValue, agitatedValue])
 
     return (
-        <Wrapper>
-            <div className="z-20 flex flex-col justify-center h-full relative">
-                <QuestionComponent
-                    info={questionInfo[1]}
-                    value={firstSawValue}
-                    setValue={(val: any) => setFirstSawValue(val)}
-                    colorful={true}
-                    positive={false}
-                />
+        <div className="container max-w-7xl mx-auto">
+            <div className="grid grid-cols-10">
+                <div className="col-span-6 flex justify-center">
+                    <div className="flex items-end h-full">
+                        {
+                            focusedControl == "none" ? (
+                                <></>
+                            ) : focusedControl == "firstSaw" ? (
+                            <div className="z-20 flex rounded border border-white p-4 text-white max-w-md text-center">
+                                Early exposure to pornography can increase risky sexual behaviour and hypersexuality in adults.
+                            </div>
+                            ) : focusedControl == "watchHrs" ? (
+                            <div className="z-20 flex rounded border border-white p-4 text-white max-w-md text-center">
+                                Daily exposure to porn can lead to dependency and addiction. 
+                            </div>
+                            ) : focusedControl == "hardcore" ? (
+                            <div className="z-20 flex rounded border border-white p-4 text-white max-w-md text-center">
+                                Regularly watching different genres of porn is a sign of porn dependency. 
+                            </div>
+                            ) : (
+                            <div className="z-20 flex rounded border border-white p-4 text-white max-w-md text-center">
+                                Experiencing stress when you avoid porn is a sign of porn dependency.  
+                            </div>
+                            )
+                        }
+                    </div>
+                </div>
+                <div className="col-span-4">
+                    <div className="z-20 flex flex-col justify-center h-full relative">
+                        <QuestionComponent
+                            info={questionInfo[1]}
+                            value={firstSawValue}
+                            setValue={(val: any) => {setFirstSawValue(val);setFocusedControl("firstSaw");  console.log(focusedControl);}}
+                            colorful={true}
+                            positive={false}
+                        />
 
-                <QuestionComponent
-                    info={questionInfo[2]}
-                    value={watchHrsValue}
-                    setValue={(val: any) => setWatchHrsValue(val)}
-                    colorful={true}
-                />
+                        <QuestionComponent
+                            info={questionInfo[2]}
+                            value={watchHrsValue}
+                            setValue={(val: any) => {setWatchHrsValue(val); setFocusedControl("watchHrs");  console.log(focusedControl);}}
+                            colorful={true}
+                        />
 
-                <QuestionComponent
-                    info={questionInfo[3]}
-                    value={hardcoreValue}
-                    setValue={(val: any) => setHardcoreValue(val)}
-                />
+                        <QuestionComponent
+                            info={questionInfo[3]}
+                            value={hardcoreValue}
+                            setValue={(val: any) => {setHardcoreValue(val);   setFocusedControl("hardcore");  console.log(focusedControl);}}
+                        />
 
-                <QuestionComponent
-                    info={questionInfo[4]}
-                    value={agitatedValue}
-                    setValue={(val: any) => setAgitatedValue(val)}
-                />
+                        <QuestionComponent
+                            info={questionInfo[4]}
+                            value={agitatedValue}
+                            setValue={(val: any) => {setAgitatedValue(val); setFocusedControl("agitated"); console.log(focusedControl);}}
+                        />
 
-                <QuestionComponent
-                    info={questionInfo[0]}
-                    value={ageValue}
-                    setValue={(val: any) => setAgeValue(val)}
-                />
+                        <QuestionComponent
+                            info={questionInfo[0]}
+                            value={ageValue}
+                            setValue={(val: any) => {setAgeValue(val); setFocusedControl("none"); console.log(focusedControl);}}
+                        />
 
-                <div className="ml-4">
-                    <ArrowButton className={'mt-4'} onClickCallback={() => setSubName('result1')}>Next</ArrowButton>
+                        <div className="ml-4">
+                            <ArrowButton className={'mt-4'} onClickCallback={() => setSubName('result1')}>Next</ArrowButton>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </Wrapper>
+        </div>
+        
     )
 }
 

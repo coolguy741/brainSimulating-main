@@ -44,7 +44,7 @@ const targetColor = {
     B: 0
 }
 
-export const RangeInput = ( { min, max, rangeMin, value, setValue, step = 1, disable = false, colorful = false, positive = true }: any ) => {
+export const RangeInput = ( { min, max, rangeMin, value, setValue, step = 1, disable = false, colorful = false, positive = true}: any ) => {
     const toHex = (value: number) => {
         let hex = parseInt(value.toString()).toString(16);
         if(hex.length === 1)
