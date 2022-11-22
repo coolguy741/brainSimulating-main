@@ -12,24 +12,6 @@ const IntroWrapper = styled.div`
 
 const ContentWrapper = styled.div`
     width: 75%;
-
-    h1, p {
-        font-size: 3.5rem;
-    }
-
-    @media(max-width: 1024px) {
-        width: 100%;
-
-        h1, p {
-            font-size: 2.5rem;
-        }
-    }
-
-    @media(max-width: 768px) {
-        h1, p {
-            font-size: 1.5rem;
-        }
-    }
 `
 
 export const Intro = () => {
@@ -37,10 +19,10 @@ export const Intro = () => {
         <IntroWrapper className={`relative mt-auto mb-auto font-Roboto flex justify-center items-center w-full h-full p-8`}>
             <div className="l-container relative w-full">
                 <ContentWrapper>
-                    <h1 className="f-hero font-bold text-black mb-12">Did you know that watching porn changes your brain chemistry?</h1>
+                    <p className="text-5xl leading-[3rem] font-semibold text-black mb-6">Did you know that watching porn changes your brain chemistry?</p>
 
-                    <p className="f-hero font-medium text-white">
-                        We’re about to simulate your very own brain so you can see how porn could be personally affecting you.
+                    <p className="text-4xl leading-[3rem] font-semibold text-white">
+                        We’re about to simulate the effect porn has on your brain.
                     </p>
 
                     <Link to={'/brain'}>
