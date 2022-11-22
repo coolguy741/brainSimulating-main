@@ -8,13 +8,15 @@ const Wrapper = styled.div`
     padding-right: 10%;
 
     .contentText {
-        font-size: 35px;
+        font-size: 32px;
         color: white;
+        line-height: 1.5;
+
     }
 
     @media( max-width: 1368px ) {
         .contentText {
-            font-size: 35px;
+            font-size: 32px;
         }
     }
 
@@ -22,7 +24,7 @@ const Wrapper = styled.div`
         padding-right: 2rem;
 
         .contentText {
-            font-size: 30px;
+            font-size: 28px;
         }
     }
 `
@@ -36,6 +38,7 @@ const NormalButton = styled.button`
     line-height: 20px;
     font-weight: 600;
     margin-top: 40px;
+    
 
     &:hover {
         color: #e5ff00;
@@ -49,7 +52,7 @@ export const ResultContent = ({ first, setSubName }: any) => {
 
     return (
         <div className="h-screen | flex flex-col | p-6">
-            <Wrapper className="z-10 ml-auto mb-auto">
+            <Wrapper className="z-10 ml-auto mb-auto mt-32">
                 <p className="contentText text-sm font-medium leading-9">
                     { first ? (
                         'This is a simulation of your brain’s activity when you are watching pornography. The parts lighting up are the dopamine rewards system which are activated when you experience something you find pleasurable and rewarding.'
