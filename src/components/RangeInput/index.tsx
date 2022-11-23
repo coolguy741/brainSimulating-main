@@ -40,7 +40,7 @@ const initialColor = {
 
 const targetColor = {
     R: 255,
-    G: 0,
+    G: 128,
     B: 0
 }
 
