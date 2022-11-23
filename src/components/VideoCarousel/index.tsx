@@ -1,4 +1,4 @@
-import { useRef, useState } from "react"
+import { useRef, useState, useEffect } from "react"
 import styled from "styled-components"
 import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
 import { Navigation, Pagination, EffectCoverflow } from "swiper";
@@ -35,6 +35,17 @@ export const VideoCarousel = () => {
     const moveToNextPage = () => {
         navigate('/encourage')
     }
+
+    useEffect(() => {
+        const brain3DApplication = (window as any).brain3DApplication
+
+        brain3DApplication.question1Sum( 90 )
+        brain3DApplication.question2Sum( 30 )
+        brain3DApplication.question3Sum( 0 )
+        brain3DApplication.question4Sum( 1 )
+        brain3DApplication.question5Sum( 0 )
+    })
+
 
     return (
         <Wrapper className={`fixed top-0 left-0 z-50 w-screen h-screen flex flex-col justify-center items-center p-6`}>
