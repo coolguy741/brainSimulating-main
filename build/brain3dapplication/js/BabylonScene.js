@@ -247,9 +247,9 @@ BabylonScene.prototype = {
         this.camera.autoRotationBehavior.idleRotationSpeed = -0.1;
         //this.camera.autoRotationBehavior.targetAlpha = 2.3633;
 
-        this.brainMaterial.albedoColor = BABYLON.Color3.FromHexString("#FF7EE7").toLinearSpace();
+        this.brainMaterial.albedoColor = BABYLON.Color3.FromHexString("#FF20A6").toLinearSpace();
         this.brainMaterial.metallic = 0;
-        this.brainMaterial.roughness  = 0.2;
+        this.brainMaterial.roughness  = 0.02;
         this.brainMaterial.alpha = 0.8;
         this.brainMaterial.indexOfRefraction = 1.5;
 
@@ -282,7 +282,7 @@ BabylonScene.prototype = {
 
 
 
-        this.brainMaterial.emissiveColor = BABYLON.Color3.FromHexString("#FF28EE").toLinearSpace();
+        this.brainMaterial.emissiveColor = BABYLON.Color3.FromHexString("#FF0000").toLinearSpace();
         this.brainMaterial.emissiveIntensity = 0;
         this.brainIdleAnimation = gsap.from(this.brainMaterial, { emissiveIntensity: 0.8*this.emissiveIntensityScalarForBrainIdle, duration: 4, ease: Expo.easeOut, repeat: -1, onRepeat: () => { this.questionParticles.start() } })
         this.brainIdleAnimation.pause();
