@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react"
-import { useFetcher } from "react-router-dom"
+import { useEffect, useState } from "react"
 import styled from "styled-components"
 import Discover from "../../pages/Discover"
 import Header from "../Header"
@@ -65,7 +64,7 @@ export const Brain = () => {
                             <Loader />
                         </LoaderWrapper>
                     ) : (
-                        <div className="w-full h-full mt-32">
+                        <div className="w-full h-full mt-52">
                             { subName === 'question' ? (
                                 <QuestionComponents setSubName={(val: any) => setSubName(val)} />
                             ) : subName === 'result1' ? (

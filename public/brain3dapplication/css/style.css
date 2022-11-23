@@ -30,3 +30,13 @@ html {
 #scene-explorer-host {
     position: absolute !important;  
 }
+
+.slidecontainer{
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
+  max-width: 400px;
+  padding:20px;
+  white-space: break-spaces;
+}

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import styled from "styled-components"
 import { questionInfo } from "../../constants"
 import { ArrowButton } from "../../theme/components"
 import QuestionComponent from "./component"
@@ -26,7 +25,7 @@ export const QuestionComponents = ({ setSubName }: any) => {
     return (
         <div className="w-full">
             <div className="grid grid-cols-10">
-                <div className="col-span-6 flex justify-center -mb-16 ">
+                <div className="col-span-6 flex justify-center -mb-28 -mr-12">
                     <div className="flex items-end h-full text-base">
                         {
                             focusedControl == "none" ? (
