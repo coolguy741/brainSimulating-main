@@ -1,6 +1,5 @@
-import styled from "styled-components"
-import { useState } from 'react'
 import { RadioGroup } from '@headlessui/react'
+import styled from "styled-components"
 
 const CheckIcon = (props: any) => {
     return (
@@ -22,7 +21,6 @@ const Wrapper = styled.div`
         font-size: clamp(0.875rem, 0.857rem + 0.09vw, 1rem);
         line-height: 1;
         padding: .35rem 1rem;
-        background-color: white;
         border-radius: 2rem;
         transition: background-color 0.3s cubic-bezier(0.45, 0.05, 0.55, 0.95), color 0.3s cubic-bezier(0.45, 0.05, 0.55, 0.95);
 
@@ -57,7 +55,7 @@ export const RadioSelect = ({ plans, selected, setSelected, alignLeft }: any) =>
                                 className={({ active, checked }) =>
                                     `
                                     ${
-                                        checked ? 'bg-yellow text-black' : 'bg-white text-black'
+                                        checked ? 'bg-yellow text-black' : 'bg-transparent border-[1px] border-white text-white'
                                     }
                                     relative flex cursor-pointer focus:outline-none radioOption`
                                 }
