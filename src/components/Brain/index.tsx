@@ -86,7 +86,7 @@ export const Brain = () => {
                         </div>
                     ) }
             </Container>
-            { subName === 'discover' || subName === 'video'  ? (
+            { subName === 'discover' ? (
                 <video
                     autoPlay
                     loop

@@ -38,7 +38,7 @@ export const VideoCarousel = () => {
 
     return (
         <Wrapper className={`fixed top-0 left-0 z-50 w-screen h-screen flex flex-col justify-center items-center p-6`}>
-            <div className="l-container | relative text-center">
+            {/* <div className="l-container | relative text-center">
                 <Swiper
                     centeredSlides
                     slidesPerView={'auto'}
@@ -92,6 +92,47 @@ export const VideoCarousel = () => {
                 <h2>
                     The more porn you watch, the more you increase your chances of dampening the rewarding feeling you can get from other pleasures.
                 </h2>
+            </div> */}
+            <div className="container | relative text-start text-white mt-32">
+                <div className="flex mb-16">
+                    <div className="flex-none">
+                        <img className="w-24 h-20 mr-6" src="/assets/images/love.png" alt = "cake" />
+                    </div>
+                    <div className="flex-inital w-64">
+                        <h5 className="text-xl pb-3" style={{fontSize: "40px"}}>
+                            INTIMACY
+                        </h5>
+                        <p>
+                            Physical and romantic intimacy with your partner just isn't as exciting
+                        </p>
+                    </div>
+                </div>
+                <div className="flex mb-16">
+                    <div className="flex-none">
+                        <img className="w-24 h-20 mr-6" src="/assets/images/cake.png" alt = "cake" />
+                    </div>
+                    <div className="flex-inital w-64">
+                        <h5 className="text-xl pb-3" style={{fontSize: "40px"}}>
+                        TREATS
+                        </h5>
+                        <p>
+                            Your favourite food doesn't leave you feeling quite as satisfied
+                        </p>
+                    </div>
+                </div>
+                <div className="flex mb-16">
+                    <div className="flex-none">
+                        <img className="w-24 h-20 mr-6" src="/assets/images/sport.png" alt = "cake" />
+                    </div>
+                    <div className="flex-inital w-64">
+                        <h5 className="text-xl pb-3" style={{fontSize: "40px"}}>
+                            EXERCISE
+                        </h5>
+                        <p>
+                            Rigorous exercise doesn't give you the same level of high that you hope for
+                        </p>
+                    </div>
+                </div>
             </div>
         </Wrapper>
     )
