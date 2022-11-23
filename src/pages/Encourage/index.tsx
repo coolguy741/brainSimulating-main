@@ -1,7 +1,7 @@
-import { ArrowDown, ChevronDown } from "react-feather"
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import Header from "../../components/Header"
+import { ArrowButton } from "../../theme/components"
 
 const Wrapper = styled.div`
     position: relative;
@@ -22,11 +22,6 @@ const ContentWrapper = styled.div`
     width: 60%;
     margin-left: 5%;
 
-    h1, p {
-        font-size: 4.5rem;
-        line-height: 5.5rem;
-    }
-
     @media(max-width: 1024px) {
         width: 100%;
 
@@ -43,6 +38,8 @@ const ContentWrapper = styled.div`
 `
 
 export const Encourage = () => {
+    const navigate = useNavigate();
+
     return (
         <div>
             <Wrapper className={`w-screen h-screen`}>
@@ -53,11 +50,8 @@ export const Encourage = () => {
                         <IntroWrapper className={`relative mt-auto mb-auto font-Roboto flex justify-center items-center w-full h-full p-8 z-50`}>
                             <div className="l-container relative w-full">
                                 <ContentWrapper>
-                                    <h1 className="f-hero font-bold text-black mb-16">Reducing your porn intake could lead to a new lease on life.</h1>
-
-                                    <Link to={'/end'}>
-                                        <ChevronDown size={200} fontSize={20} />
-                                    </Link>
+                                    <p className="text-5xl leading-[3.5rem] font-bold text-black mb-2">The good news is, studies show that if you stop watching porn, your dopamine rewards system gradually resets to normal levels, so you can start to enjoy life’s pleasures more.</p>
+                                    <ArrowButton className={'mt-4'} onClickCallback={() => navigate('/end')}>Next</ArrowButton>
                                 </ContentWrapper>
                             </div>
                         </IntroWrapper>
