@@ -1,4 +1,5 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useFetcher } from "react-router-dom"
 import styled from "styled-components"
 import Discover from "../../pages/Discover"
 import Header from "../Header"
@@ -45,14 +46,20 @@ export const Brain = () => {
 
     const [ subName, setSubName ] = useState('question')
 
+    const [delay, setDelay] = useState(0)
+
+    useEffect(() => {
+        setTimeout(() => setDelay(11), 7000);
+        console.log("delay", delay);
+    })
+
     return (
         <div>
             <Container className={`w-full h-full bg-transparent z-50`}>
-                    {loadComplete ? (<Header />) : <></>}
+                    {delay >= 10 && loadComplete ? (<Header />) : <></>}
                     
                     <Scene setLoadComplete={ () => setLoadComplete(true) } />
-
-                    { !loadComplete ? (
+                    { !loadComplete || delay < 10 ? (
                         <LoaderWrapper className={'h-full | flex flex-col | p-6'}>
                             <BackDrop className="fixed top-0 left-0 w-full h-full z-10" />
                             <Loader />
