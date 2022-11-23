@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 
 const Wrapper = styled.div`
     width: 40%;
-    margin-left: 55%;
+    margin-left: 50%;
 
     h2 {
         color: white;
