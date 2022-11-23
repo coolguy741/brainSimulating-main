@@ -115,7 +115,7 @@ export const VideoCarousel = () => {
                         <img className="w-24 h-20 mr-6" src="/assets/images/love.png" alt = "cake" />
                     </div>
                     <div className="flex-inital w-64">
-                        <h5 className="text-xl pb-3 font-bold" style={{fontSize: "50px"}}>
+                        <h5 className="text-xl pb-3 font-bold" style={{fontSize: "40px"}}>
                             INTIMACY
                         </h5>
                         <p>
