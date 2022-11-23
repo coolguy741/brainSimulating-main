@@ -25,6 +25,7 @@ const Wrapper = styled.div`
 `
 
 export const VideoCarousel = () => {
+    const [duration, setDuration] = useState(0);
     const navigate = useNavigate()
 
     const onPlayEnd = () => {
@@ -44,6 +45,10 @@ export const VideoCarousel = () => {
         brain3DApplication.question3Sum( 0 )
         brain3DApplication.question4Sum( 1 )
         brain3DApplication.question5Sum( 0 )
+
+        if(duration == 10) moveToNextPage();
+        setTimeout(() => setDuration(10), 7000);
+
     })
 
 
