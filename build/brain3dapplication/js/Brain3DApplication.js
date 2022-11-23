@@ -98,7 +98,7 @@ Brain3DApplication.prototype = {
 
   // form calls this function with answer 0-40
   question3Sum: function (value) {
-    this.question3Score = (value / 40) ** 2;
+    this.question3Score = value / 15;
     this.calculateTotalAndApply();
   },
 
