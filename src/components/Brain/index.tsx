@@ -10,7 +10,7 @@ import ResultContent from "./resultContent"
 
 
 const BackDrop = styled.div`
-    background-color: #ef1023;
+    // background-color: #ef1023;
     background-image: url('/assets/images/Brain_CU.jpg');
     background-size: cover;
     background-repeat: no-repeat;
