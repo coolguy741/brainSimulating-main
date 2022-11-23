@@ -24,10 +24,10 @@ export const QuestionComponents = ({ setSubName }: any) => {
     }, [ageValue, firstSawValue, watchHrsValue, hardcoreValue, agitatedValue])
 
     return (
-        <div className="container max-w-7xl mx-auto">
+        <div className="w-full">
             <div className="grid grid-cols-10">
-                <div className="col-span-7 flex justify-center">
-                    <div className="flex items-end h-full">
+                <div className="col-span-6 flex justify-center -mb-48">
+                    <div className="flex items-end h-full text-base">
                         {
                             focusedControl == "none" ? (
                                 <></>
@@ -51,7 +51,7 @@ export const QuestionComponents = ({ setSubName }: any) => {
                         }
                     </div>
                 </div>
-                <div className="col-span-3">
+                <div className="col-span-4">
                     <div className="z-20 flex flex-col justify-center h-full relative">
                         <QuestionComponent
                             info={questionInfo[1]}
