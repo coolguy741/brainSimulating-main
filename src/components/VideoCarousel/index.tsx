@@ -9,7 +9,7 @@ import 'swiper/css/effect-coverflow';
 import './index.scss'
 import RadioSelect from "../RadioGroup";
 import { ArrowButton } from "../../theme/components";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Wrapper = styled.div`
     width: 40%;
@@ -46,8 +46,8 @@ export const VideoCarousel = () => {
         brain3DApplication.question4Sum( 1 )
         brain3DApplication.question5Sum( 0 )
 
-        if(duration == 10) moveToNextPage();
-        setTimeout(() => setDuration(10), 7000);
+        // if(duration == 10) moveToNextPage();
+        // setTimeout(() => setDuration(10), 7000);
 
     })
 
@@ -136,7 +136,7 @@ export const VideoCarousel = () => {
                         </p>
                     </div>
                 </div>
-                <div className="flex mb-16">
+                <div className="flex mb-8">
                     <div className="flex-none">
                         <img className="w-24 h-20 mr-6" src="/assets/images/sport.png" alt = "cake" />
                     </div>
@@ -148,6 +148,11 @@ export const VideoCarousel = () => {
                             Rigorous exercise doesn't give you the same level of high that you hope for
                         </p>
                     </div>
+                </div>
+                <div className="flex">
+                    <Link to={'/encourage'}>
+                        <ArrowButton>Next</ArrowButton>
+                    </Link>
                 </div>
             </div>
         </Wrapper>
