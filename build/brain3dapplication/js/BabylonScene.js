@@ -20,6 +20,9 @@ function BabylonScene(application) {
 }
 
 BabylonScene.prototype = {
+  primaryPositions: [],
+  lightOn: true,
+
   changeBackgroundColor: function (color) {
     this.scene.clearColor = BABYLON.Color3.FromHexString(color);
   },
@@ -225,6 +228,8 @@ BabylonScene.prototype = {
 
       ob.position1 = item.position;
 
+      this.primaryPositions.push({ ...item.position });
+
       ob.position2 = ob.position1.add(ob.direction1.scale(0.2));
       tl.to(
         item.position,
@@ -375,6 +380,17 @@ BabylonScene.prototype = {
       this.scene.debugLayer.hide();
     }
   },
+  toggleLight: function () {
+    if (this.lightOn == true) {
+      this.lightOn = false;
+      this.setdefaultPP(false);
+      this.setGlowLayer(false);
+    } else {
+      this.lightOn = true;
+      this.setdefaultPP(true);
+      this.setGlowLayer(true);
+    }
+  },
   onKeyListener: function (event) {
     if (event.ctrlKey && event.keyCode === 73) {
       this.toggleDebug();
@@ -441,7 +457,6 @@ BabylonScene.prototype = {
     this.camera.targetScreenOffset.y = 0.05;
     this.camera.radius = 2.8;
 
-
     this.hdrTexture = new BABYLON.CubeTexture.CreateFromPrefilteredData(
       "brain3dapplication/assets/images/autoshop_02_2k_bw.env",
       this.scene
@@ -456,6 +471,9 @@ BabylonScene.prototype = {
     this.engine.runRenderLoop(this.onRenderLoop.bind(this));
     window.addEventListener("resize", this.onWindowResize.bind(this));
     this.onWindowResize();
+    window.addEventListener("wheel", this.onmousewheel.bind(this), {
+      passive: true,
+    });
   },
   onRenderLoop: function () {
     this.scene.render();
@@ -468,6 +486,98 @@ BabylonScene.prototype = {
       this.canvas.width = window.innerWidth;
       this.canvas.height = window.innerHeight;
     }, 500);
+  },
+  onmousewheel: function (e) {
+    //find direction
+    var delta = null,
+      direction = false;
+    if (!e) {
+      // if the event is not provided, we get it from the window object
+      e = window.event;
+    }
+    if (e.wheelDelta) {
+      // will work in most cases
+      delta = e.wheelDelta / 60;
+    } else if (e.detail) {
+      // fallback for Firefox
+      delta = -e.detail / 2;
+    }
+    if (delta !== null) {
+      direction = delta > 0 ? "up" : "down";
+    }
+    //move brain parts
+    this.sections = {};
+
+    var tl = gsap.timeline({
+      onComplete: this.onAnimation1Complete.bind(this),
+    });
+    //get children
+    let brainSectionData = {};
+    let a = this.brain.getChildren();
+    console.log(this.offset, "lenght", a.length);
+
+    for (let i = 0; i < a.length; i++) {
+      let item = a[i];
+
+      let ob = (brainSectionData[item.name] = {});
+
+      ob.node = item;
+
+      ob.direction1 = item.position.normalizeToNew();
+
+      ob.position1 = item.position;
+
+      // // tl.to(item.scaling, { x: 0.3, y: 0.3, z: 0.3, duration: 1, ease: Power4.easeOut }, "someLabel");
+      //wheel down
+      if (direction == "down") {
+        ob.position1 = item.position;
+        ob.position2 = ob.position1.add(ob.direction1.scale(0.1));
+        tl.to(
+          item.position,
+          {
+            x: ob.position2.x,
+            y: ob.position2.y,
+            z: ob.position2.z,
+            duration: 0.5,
+            ease: Power1.easeOut,
+          },
+          "someLabel"
+        );
+        if (this.lightOn == true) this.toggleLight();
+      } else {
+        //wheel up
+        ob.position1 = item.position;
+        ob.position2 = ob.position1.add(ob.direction1.scale(-0.1));
+        console.log(
+          "delta : ",
+          (item.position.x - this.primaryPositions[i]._x) ** 2 +
+            (item.position.y - this.primaryPositions[i]._y) ** 2 +
+            (item.position.z - this.primaryPositions[i]._z) ** 2
+        );
+        if (
+          Math.sqrt(
+            (item.position.x - this.primaryPositions[i]._x) ** 2 +
+              (item.position.y - this.primaryPositions[i]._y) ** 2 +
+              (item.position.z - this.primaryPositions[i]._z) ** 2
+          ) >= 0.08
+        ) {
+          tl.to(
+            item.position,
+            {
+              x: ob.position2.x,
+              y: ob.position2.y,
+              z: ob.position2.z,
+              duration: 0.5,
+              ease: Power1.easeOut,
+            },
+            "s1"
+          );
+        } else {
+          if (this.lightOn == false) this.toggleLight();
+        }
+      }
+    }
+    // tl.to(item.scaling, { x: 1, y: 1, z: 1, duration: 1, ease: Power4.easeOut }, "sl");
   },
 };
 
