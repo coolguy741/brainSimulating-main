@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { questionInfo } from "../../constants"
 import { ArrowButton } from "../../theme/components"
 import QuestionComponent from "./component"
+import gsap from "gsap";
 
 
 export const QuestionComponents = ({ setSubName }: any) => {
@@ -21,6 +22,15 @@ export const QuestionComponents = ({ setSubName }: any) => {
         brain3DApplication.question4Sum( (hardcoreValue) / ((questionInfo[3].answer as any).length - 1) )
         brain3DApplication.question5Sum( (agitatedValue) / ((questionInfo[4].answer as any).length - 1) )
     }, [ageValue, firstSawValue, watchHrsValue, hardcoreValue, agitatedValue])
+
+    useEffect(() => {
+        var tl = gsap.timeline({});
+       // tl.to('.control-tools', {opacity:0, y:100, duration: 0});
+        const brain3DApplication = (window as any).brain3DApplication
+        brain3DApplication.onCloseBrain = () => {
+            tl.to('.control-tools', {opacity:1, y:-100, duration: 2});
+        }
+    }, []);
 
     return (
         <div className="w-full">
@@ -51,11 +61,11 @@ export const QuestionComponents = ({ setSubName }: any) => {
                     </div>
                 </div>
                 <div className="col-span-4">
-                    <div className="z-20 flex flex-col justify-center h-full relative">
+                    <div className="z-20 flex flex-col justify-center h-full relative control-tools opacity-0">
                         <QuestionComponent
                             info={questionInfo[1]}
                             value={firstSawValue}
-                            setValue={(val: any) => {setFirstSawValue(val);setFocusedControl("firstSaw");  console.log(focusedControl);}}
+                            setValue={(val: any) => {setFirstSawValue(val);setFocusedControl("firstSaw"); }}
                             colorful={true}
                             positive={false}
                         />
@@ -63,26 +73,26 @@ export const QuestionComponents = ({ setSubName }: any) => {
                         <QuestionComponent
                             info={questionInfo[2]}
                             value={watchHrsValue}
-                            setValue={(val: any) => {setWatchHrsValue(val); setFocusedControl("watchHrs");  console.log(focusedControl);}}
+                            setValue={(val: any) => {setWatchHrsValue(val); setFocusedControl("watchHrs"); }}
                             colorful={true}
                         />
 
                         <QuestionComponent
                             info={questionInfo[3]}
                             value={hardcoreValue}
-                            setValue={(val: any) => {setHardcoreValue(val);   setFocusedControl("hardcore");  console.log(focusedControl);}}
+                            setValue={(val: any) => {setHardcoreValue(val);   setFocusedControl("hardcore"); }}
                         />
 
                         <QuestionComponent
                             info={questionInfo[4]}
                             value={agitatedValue}
-                            setValue={(val: any) => {setAgitatedValue(val); setFocusedControl("agitated"); console.log(focusedControl);}}
+                            setValue={(val: any) => {setAgitatedValue(val); setFocusedControl("agitated");}}
                         />
 
                         <QuestionComponent
                             info={questionInfo[0]}
                             value={ageValue}
-                            setValue={(val: any) => {setAgeValue(val); setFocusedControl("none"); console.log(focusedControl);}}
+                            setValue={(val: any) => {setAgeValue(val); setFocusedControl("none");}}
                         />
 
                         <div className="ml-4">

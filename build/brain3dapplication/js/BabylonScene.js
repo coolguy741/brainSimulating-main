@@ -389,6 +389,9 @@ BabylonScene.prototype = {
       this.lightOn = true;
       this.setdefaultPP(true);
       this.setGlowLayer(true);
+      if (this.application.onCloseBrain) {
+        this.application.onCloseBrain();
+      }
     }
   },
   onKeyListener: function (event) {
@@ -514,8 +517,8 @@ BabylonScene.prototype = {
     //get children
     let brainSectionData = {};
     let a = this.brain.getChildren();
-    console.log(this.offset, "lenght", a.length);
 
+    //movement effect
     for (let i = 0; i < a.length; i++) {
       let item = a[i];
 
@@ -531,29 +534,53 @@ BabylonScene.prototype = {
       //wheel down
       if (direction == "down") {
         ob.position1 = item.position;
-        ob.position2 = ob.position1.add(ob.direction1.scale(0.1));
-        tl.to(
-          item.position,
-          {
-            x: ob.position2.x,
-            y: ob.position2.y,
-            z: ob.position2.z,
-            duration: 0.5,
-            ease: Power1.easeOut,
-          },
-          "someLabel"
-        );
-        if (this.lightOn == true) this.toggleLight();
+
+        // console.log("primary", this.primaryPositions[i]);
+        // console.log("item", item.position);
+        if (
+          Math.sqrt(
+            (item.position.x - this.primaryPositions[i]._x) ** 2 +
+              (item.position.y - this.primaryPositions[i]._y) ** 2 +
+              (item.position.z - this.primaryPositions[i]._z) ** 2
+          ) <= 0.31 &&
+          Math.sqrt(
+            (item.position.x - this.primaryPositions[i]._x) ** 2 +
+              (item.position.y - this.primaryPositions[i]._y) ** 2 +
+              (item.position.z - this.primaryPositions[i]._z) ** 2
+          ) > 0.21
+        ) {
+          tl.to(
+            item.position,
+            {
+              x: this.primaryPositions[i]._x,
+              y: this.primaryPositions[i]._y,
+              z: this.primaryPositions[i]._z,
+              duration: 0.5,
+              ease: Power1.easeOut,
+            },
+            "someLabel"
+          );
+          if (this.lightOn == false) this.toggleLight();
+        } else {
+          ob.position2 = ob.position1.add(ob.direction1.scale(0.1));
+          tl.to(
+            item.position,
+            {
+              x: ob.position2.x,
+              y: ob.position2.y,
+              z: ob.position2.z,
+              duration: 0.5,
+              ease: Power1.easeOut,
+            },
+            "someLabel"
+          );
+          if (this.lightOn == true) this.toggleLight();
+        }
       } else {
         //wheel up
         ob.position1 = item.position;
         ob.position2 = ob.position1.add(ob.direction1.scale(-0.1));
-        console.log(
-          "delta : ",
-          (item.position.x - this.primaryPositions[i]._x) ** 2 +
-            (item.position.y - this.primaryPositions[i]._y) ** 2 +
-            (item.position.z - this.primaryPositions[i]._z) ** 2
-        );
+
         if (
           Math.sqrt(
             (item.position.x - this.primaryPositions[i]._x) ** 2 +
