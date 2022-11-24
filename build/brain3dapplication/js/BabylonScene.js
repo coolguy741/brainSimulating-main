@@ -549,13 +549,12 @@ BabylonScene.prototype = {
               (item.position.z - this.primaryPositions[i]._z) ** 2
           ) > 0.21
         ) {
-          ob.position2 = ob.position1.add(ob.direction1.scale(-0.3));
           tl.to(
             item.position,
             {
-              x: ob.position2.x,
-              y: ob.position2.y,
-              z: ob.position2.z,
+              x: this.primaryPositions[i]._x,
+              y: this.primaryPositions[i]._y,
+              z: this.primaryPositions[i]._z,
               duration: 0.5,
               ease: Power1.easeOut,
             },
