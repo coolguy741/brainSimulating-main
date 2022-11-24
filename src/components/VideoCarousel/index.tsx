@@ -40,11 +40,7 @@ export const VideoCarousel = () => {
     useEffect(() => {
         const brain3DApplication = (window as any).brain3DApplication
 
-        brain3DApplication.question1Sum( 90 )
-        brain3DApplication.question2Sum( 30 )
-        brain3DApplication.question3Sum( 0 )
-        brain3DApplication.question4Sum( 1 )
-        brain3DApplication.question5Sum( 0 )
+        brain3DApplication.turnOffLight();
 
         // if(duration == 10) moveToNextPage();
         // setTimeout(() => setDuration(10), 7000);

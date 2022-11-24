@@ -21,6 +21,8 @@ export const QuestionComponents = ({ setSubName }: any) => {
         brain3DApplication.question3Sum( watchHrsValue + (questionInfo[2].answer as any).min )
         brain3DApplication.question4Sum( (hardcoreValue) / ((questionInfo[3].answer as any).length - 1) )
         brain3DApplication.question5Sum( (agitatedValue) / ((questionInfo[4].answer as any).length - 1) )
+        brain3DApplication.turnOnLight()
+
     }, [ageValue, firstSawValue, watchHrsValue, hardcoreValue, agitatedValue])
 
     useEffect(() => {

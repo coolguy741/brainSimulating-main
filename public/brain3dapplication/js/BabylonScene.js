@@ -380,20 +380,22 @@ BabylonScene.prototype = {
       this.scene.debugLayer.hide();
     }
   },
-  toggleLight: function () {
-    if (this.lightOn == true) {
-      this.lightOn = false;
-      this.setdefaultPP(false);
-      this.setGlowLayer(false);
-    } else {
-      this.lightOn = true;
+  turnOnLight: function () {
+    if (this.lightOn == false) {
       this.setdefaultPP(true);
       this.setGlowLayer(true);
-      if (this.application.onCloseBrain) {
-        this.application.onCloseBrain();
-      }
+      this.lightOn = true;
     }
   },
+
+  turnOffLight: function () {
+    if (this.lightOn == true) {
+      this.setdefaultPP(false);
+      this.setGlowLayer(false);
+      this.lightOn = false;
+    }
+  },
+
   onKeyListener: function (event) {
     if (event.ctrlKey && event.keyCode === 73) {
       this.toggleDebug();
@@ -560,7 +562,9 @@ BabylonScene.prototype = {
             },
             "someLabel"
           );
-          if (this.lightOn == false) this.toggleLight();
+          if (this.application.onCloseBrain) {
+            this.application.onCloseBrain();
+          }
         } else {
           ob.position2 = ob.position1.add(ob.direction1.scale(0.1));
           tl.to(
@@ -574,7 +578,7 @@ BabylonScene.prototype = {
             },
             "someLabel"
           );
-          if (this.lightOn == true) this.toggleLight();
+          if (this.lightOn == true) this.turnOffLight();
         }
       } else {
         //wheel up
@@ -599,8 +603,6 @@ BabylonScene.prototype = {
             },
             "s1"
           );
-        } else {
-          if (this.lightOn == false) this.toggleLight();
         }
       }
     }

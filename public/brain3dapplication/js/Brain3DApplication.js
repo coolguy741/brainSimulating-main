@@ -15,7 +15,7 @@ function Brain3DApplication() {
   this.question8Score = 0;
   this.question9Score = 0;
   this.question10Score = 0;
-  this.on = false;
+  this.on = true;
 
   this.weightHigh = 50;
   this.weightMedium = 30;
@@ -113,6 +113,16 @@ Brain3DApplication.prototype = {
     this.calculateTotalAndApply();
   },
 
+  // turn on the light
+  turnOnLight: function () {
+    this.babylonScene.turnOnLight();
+  },
+
+  // turn off the light
+  turnOffLight: function () {
+    this.babylonScene.turnOffLight();
+  },
+
   calculateTotalAndApply: function () {
     this.updateBrainSection(
       this.question1Score,
@@ -204,6 +214,7 @@ Brain3DApplication.prototype = {
       this.babylonScene.questionParticles.stop();
       this.babylonScene.questionParticles.dispose();
     }
+
     if (!this.ready) return;
     this.influence = value;
     var duration = 0.175 - (0.125 * (s2 + s3 + s5) * s1 * s4) / 3;
@@ -213,6 +224,7 @@ Brain3DApplication.prototype = {
       this.glowTween.kill();
     }
     this.glowTween = gsap.timeline({ repeat: -1 });
+    console.log("brainSelection", this.brainSectionData);
     for (var prop in this.brainSectionData) {
       // "amygdala",
       // "hippocampus",
@@ -236,8 +248,7 @@ Brain3DApplication.prototype = {
       } else if (prop == "dorsolateral_prefrontal_cortex") {
         brightness = 0.002 + (s2 ** 3 * 0.99 + (s3 + s5) * 0.005) * s1 * s4;
       }
-
-      if (on == false) brightness = 0;
+      console.log(s1, s2, s3, s4, s5);
 
       item.material.emissiveIntensity = this.influence * 0.1;
       if (item.handleNodeVisibilityWithEffect) {
@@ -246,11 +257,12 @@ Brain3DApplication.prototype = {
           item.material,
           {
             alpha: 0.8,
-            emissiveIntensity: brightness * item.emmissiveScalar * 0.5,
+            // emissiveIntensity: brightness * item.emmissiveScalar * 0.5,
+            emissiveIntensity: 0,
             duration: duration,
             ease: Linear,
             yoyo: true,
-            repeat: 1,
+            repeat: 0,
           },
           overlapString
         );
@@ -258,7 +270,8 @@ Brain3DApplication.prototype = {
         this.glowTween.to(
           item.material,
           {
-            emissiveIntensity: brightness * item.emmissiveScalar * 0.5,
+            // emissiveIntensity: brightness * item.emmissiveScalar * 0.5,
+            emissiveIntensity: 0,
             duration: duration,
             ease: Linear,
             yoyo: true,
