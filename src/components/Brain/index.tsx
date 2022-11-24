@@ -49,7 +49,6 @@ export const Brain = () => {
 
     useEffect(() => {
         setTimeout(() => setDelay(11), 7000);
-        console.log("delay", delay);
     })
 
     return (
