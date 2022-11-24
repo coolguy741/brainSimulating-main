@@ -25,7 +25,6 @@ const Wrapper = styled.div`
 `
 
 export const VideoCarousel = () => {
-    const [duration, setDuration] = useState(0);
     const navigate = useNavigate()
 
     const onPlayEnd = () => {
@@ -42,11 +41,7 @@ export const VideoCarousel = () => {
 
         brain3DApplication.turnOffLight();
 
-        // if(duration == 10) moveToNextPage();
-        // setTimeout(() => setDuration(10), 7000);
-
     })
-
 
     return (
         <Wrapper className={`fixed top-0 left-0 z-50 w-screen h-screen flex flex-col justify-center items-center p-6`}>
