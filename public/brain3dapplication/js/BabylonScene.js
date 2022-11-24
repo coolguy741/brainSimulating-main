@@ -555,7 +555,7 @@ BabylonScene.prototype = {
               x: this.primaryPositions[i]._x,
               y: this.primaryPositions[i]._y,
               z: this.primaryPositions[i]._z,
-              duration: 0.5,
+              duration: 2,
               ease: Power1.easeOut,
             },
             "someLabel"

@@ -28,7 +28,7 @@ export const QuestionComponents = ({ setSubName }: any) => {
        // tl.to('.control-tools', {opacity:0, y:100, duration: 0});
         const brain3DApplication = (window as any).brain3DApplication
         brain3DApplication.onCloseBrain = () => {
-            tl.to('.control-tools', {opacity:1, y:-100, duration: 2});
+            tl.to('.control-tools', {opacity:1, y:-100, duration: 2, delay:2});
         }
     }, []);
 
