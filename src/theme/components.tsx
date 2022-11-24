@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { usePagination } from "../pages/Context";
 
 export const InputButton = styled.button`
     margin-left: 0.5rem;
@@ -38,8 +39,14 @@ export const NormalButton = styled.button`
 `
 
 export const ArrowButton = ({ children, onClickCallback, className } : any) => {
+    const [ nextPage ] = usePagination();
+    const handleClick = () => {
+        nextPage();
+        onClickCallback();
+    }
+
     return (
-        <button className={`c-btn font-bold mt-6 | md:mt-12 ${ className }`} onClick={onClickCallback}>
+        <button className={`c-btn font-bold mt-6 | md:mt-12 ${ className }`} onClick={handleClick}>
             <span className="block mr-2">{ children }</span>
             <svg fill="currentColor" clipRule="evenodd" fillRule="evenodd" strokeLinejoin="round"
                 strokeMiterlimit="2" viewBox="0 0 24 24" width="24" height="24" xmlns="http://www.w3.org/2000/svg">

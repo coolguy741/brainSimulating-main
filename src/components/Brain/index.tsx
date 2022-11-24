@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import styled from "styled-components"
+import { usePagination } from "../../pages/Context"
 import Discover from "../../pages/Discover"
 import Header from "../Header"
 import Loader from "../Loader"
@@ -41,12 +42,10 @@ const Container = styled.div`
 `
 
 export const Brain = () => {
+    const [ nextPage ] = usePagination();
     const [ loadComplete, setLoadComplete ] = useState(false)
-
     const [ subName, setSubName ] = useState('question')
-
     const [delay, setDelay] = useState(0)
-
     useEffect(() => {
         setTimeout(() => setDelay(11), 7000);
     })
@@ -56,7 +55,7 @@ export const Brain = () => {
             <Container className={`w-full h-full bg-transparent z-50`}>
                     {delay >= 10 && loadComplete ? (<Header />) : <></>}
                     
-                    <Scene setLoadComplete={ () => setLoadComplete(true) } />
+                    <Scene setLoadComplete={ () => { setLoadComplete(true); nextPage(); } } />
                     { !loadComplete || delay < 10 ? (
                         <LoaderWrapper className={'h-full | flex flex-col | p-6'}>
                             <BackDrop className="fixed top-0 left-0 w-full h-full z-10" />

@@ -39,7 +39,6 @@ const ContentWrapper = styled.div`
 
 export const Encourage = () => {
     const navigate = useNavigate();
-
     return (
         <div>
             <Wrapper className={`w-screen h-screen`}>
