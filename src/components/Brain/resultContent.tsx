@@ -33,15 +33,26 @@ export const ResultContent = ({ first, setSubName }: any) => {
     const timeOutId = useRef<any>();
     const [scrolling, setScrolling] = useState<boolean>(false);
     
+    const clearScrollOn = () => {
+        clearTimeout(timeOutId.current);
+        const id = setTimeout(() => {
+            setScrolling(false);
+        }, 1000);
+        timeOutId.current = id;
+    }
+
+    const setScrollOn = () => {
+        setTimeout(() => {
+            setScrolling(true);
+            clearScrollOn();
+        }, 2000);
+    }
+
     useEffect(() => {
         const brain3DApplication = (window as any).brain3DApplication
         brain3DApplication.onKeepScrolling = () => {
-            clearTimeout(timeOutId.current);
-            const id = setTimeout(() => {
-                setScrolling(false);
-            }, 1000);
-            timeOutId.current = id;
-            setScrolling(true);
+            if(scrolling) clearScrollOn();
+            else setScrollOn();
         }
     }, []);
 
