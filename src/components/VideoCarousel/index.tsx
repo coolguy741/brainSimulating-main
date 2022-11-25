@@ -38,10 +38,8 @@ export const VideoCarousel = () => {
 
     useEffect(() => {
         const brain3DApplication = (window as any).brain3DApplication
-
         brain3DApplication.turnOffLight();
-
-    })
+    }, [])
 
     return (
         <Wrapper className={`fixed top-0 left-0 z-50 w-screen h-screen flex flex-col justify-center items-center p-6`}>

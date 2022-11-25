@@ -35,6 +35,7 @@ Brain3DApplication.prototype = {
       this.onLoadComplete.bind(this)
     );
     this.babylonScene.load("./brain3dapplication/assets/glb/brain.glb");
+    this.babylonScene.turnOffLight();
   },
 
   createBrainSectionData: function () {
@@ -129,8 +130,7 @@ Brain3DApplication.prototype = {
       this.question2Score,
       this.question3Score,
       this.question4Score,
-      this.question5Score,
-      this.on
+      this.question5Score
     );
   },
 
@@ -204,7 +204,9 @@ Brain3DApplication.prototype = {
     }
   },
 
-  updateBrainSection: function (s1, s2, s3, s4, s5, on) {
+  updateBrainSection: function (s1, s2, s3, s4, s5) {
+    if (!this.babylonScene.lightOn) return;
+
     value = (s1 + s2 + s3 + s4 + s5) / 5;
 
     if (this.babylonScene.brainIdleAnimation) {
@@ -257,8 +259,7 @@ Brain3DApplication.prototype = {
           item.material,
           {
             alpha: 0.8,
-            // emissiveIntensity: brightness * item.emmissiveScalar * 0.5,
-            emissiveIntensity: 0,
+            emissiveIntensity: brightness * item.emmissiveScalar * 0.5,
             duration: duration,
             ease: Linear,
             yoyo: true,
@@ -270,8 +271,7 @@ Brain3DApplication.prototype = {
         this.glowTween.to(
           item.material,
           {
-            // emissiveIntensity: brightness * item.emmissiveScalar * 0.5,
-            emissiveIntensity: 0,
+            emissiveIntensity: brightness * item.emmissiveScalar * 0.5,
             duration: duration,
             ease: Linear,
             yoyo: true,
