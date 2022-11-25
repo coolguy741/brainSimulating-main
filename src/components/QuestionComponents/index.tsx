@@ -26,12 +26,12 @@ export const QuestionComponents = ({ setSubName }: any) => {
     }, [ageValue, firstSawValue, watchHrsValue, hardcoreValue, agitatedValue])
 
     useEffect(() => {
+        console.log("Question");
         var tl = gsap.timeline({});
-       // tl.to('.control-tools', {opacity:0, y:100, duration: 0});
+        tl.to('.control-tools', {opacity:0, y:100, duration: 0});
+        tl.to('.control-tools', {opacity:1, y:-100, duration: 0.5});
         // const brain3DApplication = (window as any).brain3DApplication
-        // brain3DApplication.onCloseBrain = () => {
-        //     tl.to('.control-tools', {opacity:1, y:-100, duration: 1.5});
-        // }
+        // brain3DApplication.resetBrain();
     }, []);
 
     return (
@@ -63,7 +63,7 @@ export const QuestionComponents = ({ setSubName }: any) => {
                     </div>
                 </div>
                 <div className="col-span-4 mt-32">
-                    <div className="z-20 flex flex-col justify-center h-full relative control-tools">
+                    <div className="z-20 flex flex-col justify-center h-full relative control-tools opacity-0">
                         <QuestionComponent
                             info={questionInfo[1]}
                             value={firstSawValue}

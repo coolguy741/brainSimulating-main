@@ -569,6 +569,12 @@ BabylonScene.prototype = {
   },
 
   onMouseWheel: function (e) {
+    if(this.distance == 0 && this.state === ANIMATION_STATE.PUT_TOGETHER) {
+      this.application.onKeepScrolling();
+      this.state = ANIMATION_STATE.NONE;
+      return;
+    }
+
     //find direction
     var delta = null,
       direction = false;
@@ -576,22 +582,18 @@ BabylonScene.prototype = {
       e = window.event; // if the event is not provided, we get it from the window object
     }
     if (e.wheelDelta) {
-      delta = e.wheelDelta / 60; // will work in most cases
+      delta = -1 * e.wheelDelta / 60; // will work in most cases
     } else if (e.detail) {
-      delta = -e.detail / 2; // fallback for Firefox
+      delta = e.detail / 2; // fallback for Firefox
     }
     if (delta !== null) {
-      direction = delta > 0 ? "up" : "down";
+      direction = delta > 0 ? "down" : "up";
     }
 
     this.sections = {};
     var tl = gsap.timeline({});
     let brainSectionData = {};
     let a = this.brain.getChildren();
-
-    console.log("Debug: distance:", this.distance);
-    console.log("Debug: angle:", this.angleDelta);
-    console.log("Debug: state:", this.state);
 
     for (let i = 0; i < a.length; i++) {
       let item = a[i];
@@ -650,6 +652,7 @@ BabylonScene.prototype = {
           this.distance = TARGET_DISTANCE;
           this.state = ANIMATION_STATE.ROTATION;
         }
+
         const position = this.primaryPositions[i].clone();
         ob.position2 = position.add(ob.direction1.scale(this.distance));
         const params1 = this.getAnimationParamsByPosition(
@@ -661,22 +664,20 @@ BabylonScene.prototype = {
       }
     }
     this.lastState = this.state;
-
-    if(this.application.onKeepScrolling)
-      this.application.onKeepScrolling();
   },
   resetBrain: function() {
     const tl = gsap.timeline({});
     const items = this.brain.getChildren();
     for (let i = 0; i < items.length; i++) {
       let item = items[i];
-      const params1 = this.getAnimationParamsByPosition(
-        this.primaryPositions[i],
+      const params = this.getAnimationParamsByPosition(
+        this.primaryPositions[i].clone(),
         0.5,
         Power0.easeNone
       );
-      tl.to(item.position, params1, "someLabel");
+      tl.to(item.position, params, "someLabel");
     }
+    console.log(this.primaryPositions);
     this.state = ANIMATION_STATE.NONE;
   }
 };

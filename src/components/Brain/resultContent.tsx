@@ -30,37 +30,23 @@ const NormalButton = styled.button`
 `
 
 export const ResultContent = ({ first, setSubName }: any) => {
-    const timeOutId = useRef<any>();
     const [scrolling, setScrolling] = useState<boolean>(false);
+    const isScrollSet = useRef<boolean>(false);
     
-    const clearScrollOn = () => {
-        clearTimeout(timeOutId.current);
-        const id = setTimeout(() => {
-            setScrolling(false);
-        }, 1000);
-        timeOutId.current = id;
-    }
-
-    const setScrollOn = () => {
-        setTimeout(() => {
-            setScrolling(true);
-            clearScrollOn();
-        }, 2000);
-    }
-
     useEffect(() => {
         const brain3DApplication = (window as any).brain3DApplication
         brain3DApplication.onKeepScrolling = () => {
-            if(scrolling) clearScrollOn();
-            else setScrollOn();
+            if(isScrollSet.current) return;
+            isScrollSet.current = true;
+            console.log("Debug: Next Button");
+            setScrolling(true);
+            setTimeout(() => {
+                onClickNextButton();
+            }, 2000);
         }
     }, []);
 
     const onClickNextButton = () => {
-        if(first) {
-            const brain3DApplication = (window as any).brain3DApplication
-            brain3DApplication.resetBrain();
-        }
         setSubName( first ? 'question' : 'discover')
     }
 
@@ -78,9 +64,11 @@ export const ResultContent = ({ first, setSubName }: any) => {
                 </p>
 
                 <div className="w-full">
-                    <ArrowButton className="flex justify-center items-center" onClickCallback={onClickNextButton}>
-                        {first ? "Next" : "Explore"}
-                    </ArrowButton>
+                    {
+                        !first && <ArrowButton className="flex justify-center items-center" onClickCallback={onClickNextButton}>
+                            Explore
+                        </ArrowButton>
+                    }
                 </div>
             </Wrapper>
         </div>
