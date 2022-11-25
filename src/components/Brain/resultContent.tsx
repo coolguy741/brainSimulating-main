@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react"
 import styled from "styled-components"
 import { ArrowButton } from "../../theme/components"
 
@@ -29,6 +30,15 @@ const NormalButton = styled.button`
 `
 
 export const ResultContent = ({ first, setSubName }: any) => {
+    const [scrolling, setScrolling] = useState<boolean>(false);
+    
+    useEffect(() => {
+        const brain3DApplication = (window as any).brain3DApplication
+        brain3DApplication.onKeepScrolling = () => {
+            setScrolling(true);
+        }
+    }, []);
+
     const onClickNextButton = () => {
         if(first) {
             const brain3DApplication = (window as any).brain3DApplication
@@ -42,7 +52,9 @@ export const ResultContent = ({ first, setSubName }: any) => {
             <Wrapper className="z-10 ml-auto mb-auto mt-24">
                 <p className="contentText text-lg font-light leading-8">
                     { first ? (
-                        'We’re about to simulate your brain activity when you watch porn. The parts that you will see lighting up are your dopamine rewards system which are activated when you experience something you find pleasurable and rewarding.'
+                        scrolling ? 
+                        `Keep scrolling to see what happens to your brain's dopamine rewards system when you watch porn.` : 
+                        `This is your brain's dopamine rewards system which is activated when you experience something you find pleasurable and rewarding.`
                     ) : (
                         `When you regularly watch porn for pleasure you run the risk of damaging your dopamine rewards system. This means you increase the chances of dampening or even losing the rewarding feeling you get from other normally pleasurable experiences in life.`
                     ) }

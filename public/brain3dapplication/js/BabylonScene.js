@@ -661,6 +661,9 @@ BabylonScene.prototype = {
       }
     }
     this.lastState = this.state;
+
+    if(this.application.onKeepScrolling)
+      this.application.onKeepScrolling();
   },
   resetBrain: function() {
     const tl = gsap.timeline({});
