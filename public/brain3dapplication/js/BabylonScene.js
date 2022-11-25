@@ -642,14 +642,7 @@ BabylonScene.prototype = {
         }
       } else if (this.state == ANIMATION_STATE.PUT_TOGETHER) {
         if (i == 0) this.distance = this.distance - K_MOVE * delta;
-        if (this.distance <= 0) {
-          this.distance = 0;
-          if (i == a.length - 1) this.state = ANIMATION_STATE.NONE;
-          if (this.application.onCloseBrain) {
-            this.application.onCloseBrain();
-            this.turnOnLight();
-          }
-        }
+        if (this.distance <= 0) this.distance = 0;
         if (
           this.distance >= TARGET_DISTANCE &&
           this.lastState != ANIMATION_STATE.ROTATION
@@ -669,6 +662,20 @@ BabylonScene.prototype = {
     }
     this.lastState = this.state;
   },
+  resetBrain: function() {
+    const tl = gsap.timeline({});
+    const items = this.brain.getChildren();
+    for (let i = 0; i < items.length; i++) {
+      let item = items[i];
+      const params1 = this.getAnimationParamsByPosition(
+        this.primaryPositions[i],
+        0.5,
+        Power0.easeNone
+      );
+      tl.to(item.position, params1, "someLabel");
+    }
+    this.state = ANIMATION_STATE.NONE;
+  }
 };
 
 var inherit_1 = Object.create(PublishSubscribe.prototype);

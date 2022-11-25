@@ -28,10 +28,10 @@ export const QuestionComponents = ({ setSubName }: any) => {
     useEffect(() => {
         var tl = gsap.timeline({});
        // tl.to('.control-tools', {opacity:0, y:100, duration: 0});
-        const brain3DApplication = (window as any).brain3DApplication
-        brain3DApplication.onCloseBrain = () => {
-            tl.to('.control-tools', {opacity:1, y:-100, duration: 1.5});
-        }
+        // const brain3DApplication = (window as any).brain3DApplication
+        // brain3DApplication.onCloseBrain = () => {
+        //     tl.to('.control-tools', {opacity:1, y:-100, duration: 1.5});
+        // }
     }, []);
 
     return (
@@ -63,7 +63,7 @@ export const QuestionComponents = ({ setSubName }: any) => {
                     </div>
                 </div>
                 <div className="col-span-4 mt-32">
-                    <div className="z-20 flex flex-col justify-center h-full relative control-tools opacity-0">
+                    <div className="z-20 flex flex-col justify-center h-full relative control-tools">
                         <QuestionComponent
                             info={questionInfo[1]}
                             value={firstSawValue}
@@ -98,7 +98,7 @@ export const QuestionComponents = ({ setSubName }: any) => {
                         />
 
                         <div className="ml-4">
-                            <ArrowButton className={'mt-4'} onClickCallback={() => setSubName('result1')}>Next</ArrowButton>
+                            <ArrowButton className={'mt-4'} onClickCallback={() => setSubName('result2')}>Next</ArrowButton>
                         </div>
                     </div>
                 </div>

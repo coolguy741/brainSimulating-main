@@ -124,6 +124,10 @@ Brain3DApplication.prototype = {
     this.babylonScene.turnOffLight();
   },
 
+  resetBrain: function() {
+    this.babylonScene.resetBrain();
+  },
+
   calculateTotalAndApply: function () {
     this.updateBrainSection(
       this.question1Score,

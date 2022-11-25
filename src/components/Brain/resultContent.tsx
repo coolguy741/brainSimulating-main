@@ -30,7 +30,11 @@ const NormalButton = styled.button`
 
 export const ResultContent = ({ first, setSubName }: any) => {
     const onClickNextButton = () => {
-        setSubName( first ? 'result2' : 'discover')
+        if(first) {
+            const brain3DApplication = (window as any).brain3DApplication
+            brain3DApplication.resetBrain();
+        }
+        setSubName( first ? 'question' : 'discover')
     }
 
     return (
@@ -38,7 +42,7 @@ export const ResultContent = ({ first, setSubName }: any) => {
             <Wrapper className="z-10 ml-auto mb-auto mt-24">
                 <p className="contentText text-lg font-light leading-8">
                     { first ? (
-                        'This is a simulation of your brain’s activity when you are watching pornography. The parts lighting up are the dopamine rewards system which are activated when you experience something you find pleasurable and rewarding.'
+                        'We’re about to simulate your brain activity when you watch porn. The parts that you will see lighting up are your dopamine rewards system which are activated when you experience something you find pleasurable and rewarding.'
                     ) : (
                         `When you regularly watch porn for pleasure you run the risk of damaging your dopamine rewards system. This means you increase the chances of dampening or even losing the rewarding feeling you get from other normally pleasurable experiences in life.`
                     ) }
