@@ -1,16 +1,30 @@
 {
   "files": {
+<<<<<<< HEAD
     "main.css": "/static/css/main.98d84606.css",
     "main.js": "/static/js/main.ba223405.js",
+=======
+    "main.css": "/static/css/main.6db33f6f.css",
+    "main.js": "/static/js/main.e2ed9993.js",
+>>>>>>> f0ca764da4fd7479b51239a3d7eba95e119b6729
     "static/media/Roboto-Regular.ttf": "/static/media/Roboto-Regular.fc2b5060f7accec5cf74.ttf",
     "static/media/TheSans Plain.otf": "/static/media/TheSans Plain.91698183f27b3e8d106d.otf",
     "static/media/UTILITY.ttf": "/static/media/UTILITY.ae5b05636bd72f3119dc.ttf",
     "index.html": "/index.html",
+<<<<<<< HEAD
     "main.98d84606.css.map": "/static/css/main.98d84606.css.map",
     "main.ba223405.js.map": "/static/js/main.ba223405.js.map"
   },
   "entrypoints": [
     "static/css/main.98d84606.css",
     "static/js/main.ba223405.js"
+=======
+    "main.6db33f6f.css.map": "/static/css/main.6db33f6f.css.map",
+    "main.e2ed9993.js.map": "/static/js/main.e2ed9993.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6db33f6f.css",
+    "static/js/main.e2ed9993.js"
+>>>>>>> f0ca764da4fd7479b51239a3d7eba95e119b6729
   ]
 }

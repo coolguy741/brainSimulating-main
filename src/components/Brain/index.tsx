@@ -44,7 +44,7 @@ const Container = styled.div`
 export const Brain = () => {
     const [ nextPage ] = usePagination();
     const [ loadComplete, setLoadComplete ] = useState(false)
-    const [ subName, setSubName ] = useState('question')
+    const [ subName, setSubName ] = useState('result1')
     const [delay, setDelay] = useState(0)
     useEffect(() => {
         setTimeout(() => setDelay(11), 7000);
@@ -54,7 +54,6 @@ export const Brain = () => {
         <div>
             <Container className={`w-full h-full bg-transparent z-50`}>
                     {delay >= 10 && loadComplete ? (<Header />) : <></>}
-                    
                     <Scene setLoadComplete={ () => { setLoadComplete(true); nextPage(); } } />
                     { !loadComplete || delay < 10 ? (
                         <LoaderWrapper className={'h-full | flex flex-col | p-6'}>
