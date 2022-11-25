@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import styled from "styled-components"
 import { ArrowButton } from "../../theme/components"
 
@@ -30,11 +30,17 @@ const NormalButton = styled.button`
 `
 
 export const ResultContent = ({ first, setSubName }: any) => {
+    const timeOutId = useRef<any>();
     const [scrolling, setScrolling] = useState<boolean>(false);
     
     useEffect(() => {
         const brain3DApplication = (window as any).brain3DApplication
         brain3DApplication.onKeepScrolling = () => {
+            clearTimeout(timeOutId.current);
+            const id = setTimeout(() => {
+                setScrolling(false);
+            }, 1000);
+            timeOutId.current = id;
             setScrolling(true);
         }
     }, []);
