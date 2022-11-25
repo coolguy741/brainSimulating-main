@@ -94,7 +94,7 @@ export const VideoCarousel = () => {
                 </div>
                 <div className="flex mb-16">
                     <RotateIcon className="flex-none">
-                        <img className="cake-icon w-24 h-20 mr-6" src="/assets/images/cake.png" alt = "cake" />
+                        <img className="cake-icon w-24 h-20" src="/assets/images/cake.png" alt = "cake" />
                     </RotateIcon>
                     <div className="ml-6 flex-inital" style={{width: "200px"}}>
                         <h5 className="text-xl pb-3 font-bold" style={{fontSize: "40px"}}>
@@ -107,7 +107,7 @@ export const VideoCarousel = () => {
                 </div>
                 <div className="flex mb-8">
                     <RotateIcon className="flex-none">
-                        <img className="sport-icon w-24 h-20 mr-6" src="/assets/images/sport.png" alt = "cake" />
+                        <img className="sport-icon w-24 h-20" src="/assets/images/sport.png" alt = "cake" />
                     </RotateIcon>
                     <div className="ml-6 flex-inital" style={{width: "200px"}}>
                         <h5 className="text-xl pb-3 font-bold" style={{fontSize: "40px"}}>

@@ -104,7 +104,6 @@ export const QuestionComponents = ({ setSubName }: any) => {
                 </div>
             </div>
         </div>
-        
     )
 }
 
