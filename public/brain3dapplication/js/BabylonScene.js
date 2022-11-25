@@ -1,5 +1,5 @@
 const TARGET_DISTANCE = 0.49; // 0.3
-const K_MOVE = 0.001;
+const K_MOVE = 0.01;
 const TARGET_ANGLE = 3.141592 * 2;
 const K_ANGLE = 0.1;
 const ANIMATION_STATE = {
@@ -598,10 +598,13 @@ BabylonScene.prototype = {
       //wheel down
       ob.position1 = item.position;
       if (this.state == ANIMATION_STATE.BREAK_OUT) {
-        this.distance = this.distance + K_MOVE * Math.abs(delta);
-        if (this.distance > TARGET_DISTANCE) {
-          this.distance = TARGET_DISTANCE;
-          if (i == a.length - 1) this.state = ANIMATION_STATE.ROTATION;
+        if (i == 0) {
+          this.distance = this.distance + K_MOVE * Math.abs(delta);
+          if (this.distance > TARGET_DISTANCE) this.distance = TARGET_DISTANCE;
+        }
+
+        if (this.distance >= TARGET_DISTANCE && i == a.length - 1) {
+          this.state = ANIMATION_STATE.ROTATION;
         }
 
         const position = this.primaryPositions[i].clone();
@@ -632,8 +635,8 @@ BabylonScene.prototype = {
           });
         }
       } else if (this.state == ANIMATION_STATE.PUT_TOGETHER) {
-        this.distance = this.distance - K_MOVE * Math.abs(delta);
-        if (this.distance < 0) {
+        if (i == 0) this.distance = this.distance - K_MOVE * Math.abs(delta);
+        if (this.distance <= 0) {
           this.distance = 0;
           if (i == a.length - 1) this.state = ANIMATION_STATE.NONE;
           if (this.application.onCloseBrain) {
@@ -641,6 +644,8 @@ BabylonScene.prototype = {
             this.turnOnLight();
           }
         }
+
+        if (i == a.length - 1) console.log("debug: distance", this.distance);
 
         const position = this.primaryPositions[i].clone();
         ob.position2 = position.add(ob.direction1.scale(this.distance));
@@ -651,27 +656,6 @@ BabylonScene.prototype = {
         );
         tl.to(item.position, params1, "someLabel");
       }
-
-      // tl.to(item.position, params1, "someLabel");
-      // const params = this.getAnimationParamsByPosition(
-      //   this.primaryPositions[i],
-      //   2,
-      //   Power1.easeOut
-      // );
-      // tl.to(item.position, params, "someLabel");
-      // if (this.application.onCloseBrain) this.application.onCloseBrain();
-
-      // const y = 10.56;
-      // const duration = 1;
-      // const params2 = this.getAnimationParamsByY(
-      //   y,
-      //   duration,
-      //   Power4.easeIn
-      // );
-
-      // tl.from(this.brain.rotation, params2);
-
-      // if (this.lightOn) this.turnOffLight();
     }
   },
 };

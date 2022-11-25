@@ -37,7 +37,7 @@ export const QuestionComponents = ({ setSubName }: any) => {
     return (
         <div className="w-full">
             <div className="grid grid-cols-10">
-                <div className="col-span-6 flex justify-center 2xl:-mb-28 -mr-12">
+                <div className="col-span-6 flex justify-center 2xl:-mb-12 -mr-6">
                     <div className="flex items-end h-full text-base">
                         {
                             focusedControl == "none" ? (
