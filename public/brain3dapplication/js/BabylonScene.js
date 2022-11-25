@@ -8,6 +8,7 @@ const ANIMATION_STATE = {
   PUT_TOGETHER: 2,
   ROTATION: 3,
 };
+const ALMOST_ZERO = 0.01;
 
 /**
  * getDistance
@@ -48,6 +49,7 @@ function BabylonScene(application) {
   this.keyListener = this.onKeyListener.bind(this);
   this.emissiveIntensityScalarForBrainIdle = 0;
   this.state = ANIMATION_STATE.BREAK_OUT;
+  this.lastState = ANIMATION_STATE.NONE;
   this.distance = 0;
   this.angleDelta = 0;
   this.initialAngle = 0;
@@ -566,7 +568,7 @@ BabylonScene.prototype = {
     }, 500);
   },
 
-  onMouseWheel: async function (e) {
+  onMouseWheel: function (e) {
     //find direction
     var delta = null,
       direction = false;
@@ -583,59 +585,63 @@ BabylonScene.prototype = {
     }
 
     this.sections = {};
-
     var tl = gsap.timeline({});
-
     let brainSectionData = {};
     let a = this.brain.getChildren();
+
+    console.log("Debug: distance:", this.distance);
+    console.log("Debug: angle:", this.angleDelta);
+    console.log("Debug: state:", this.state);
+
     for (let i = 0; i < a.length; i++) {
       let item = a[i];
       let ob = (brainSectionData[item.name] = {});
       ob.node = item;
       ob.position1 = item.position;
       ob.direction1 = item.position.normalizeToNew();
-
-      //wheel down
-      ob.position1 = item.position;
       if (this.state == ANIMATION_STATE.BREAK_OUT) {
         if (i == 0) {
-          this.distance = this.distance + K_MOVE * Math.abs(delta);
+          this.distance = this.distance + K_MOVE * delta;
           if (this.distance > TARGET_DISTANCE) this.distance = TARGET_DISTANCE;
+          if (this.distance < 0) this.distance = 0;
         }
 
-        if (this.distance >= TARGET_DISTANCE && i == a.length - 1) {
+        if (
+          this.distance == TARGET_DISTANCE &&
+          i == a.length - 1 &&
+          this.lastState != ANIMATION_STATE.ROTATION
+        ) {
           this.state = ANIMATION_STATE.ROTATION;
         }
-
         const position = this.primaryPositions[i].clone();
         ob.position2 = position.add(ob.direction1.scale(this.distance));
         const params1 = this.getAnimationParamsByPosition(
           ob.position2,
-          1.0,
+          0.5,
           Power0.easeNone
         );
         tl.to(item.position, params1, "someLabel");
       } else if (this.state == ANIMATION_STATE.ROTATION) {
         if (i == 0) {
-          console.log("Debug: rotation start");
-          this.angleDelta = this.angleDelta + K_ANGLE * Math.abs(delta);
-          if (Math.abs(this.angleDelta) > TARGET_ANGLE) {
-            this.angleDelta = TARGET_ANGLE;
+          this.angleDelta = this.angleDelta + K_ANGLE * delta;
+          if (Math.abs(this.angleDelta) >= TARGET_ANGLE) {
             this.state = ANIMATION_STATE.PUT_TOGETHER;
+            this.angleDelta = TARGET_ANGLE;
+          }
+          if (this.angleDelta < 0) {
+            this.angleDelta = 0;
+            this.distance = TARGET_DISTANCE;
+            this.state = ANIMATION_STATE.BREAK_OUT;
           }
           const yAngle = this.angleDelta + this.initialAngle.y;
-          console.log("Debug: yAngle", yAngle);
-          console.log("Debug: initialAngle", this.initialAngle);
-          console.log("Debug: AngleDelta", this.angleDelta);
-
           tl.to(this.brain.rotation, {
             y: yAngle,
-            duration: 1.0,
+            duration: 0.5,
             ease: Power0.easeNone,
           });
         }
       } else if (this.state == ANIMATION_STATE.PUT_TOGETHER) {
-        if (i == 0) this.distance = this.distance - K_MOVE * Math.abs(delta);
+        if (i == 0) this.distance = this.distance - K_MOVE * delta;
         if (this.distance <= 0) {
           this.distance = 0;
           if (i == a.length - 1) this.state = ANIMATION_STATE.NONE;
@@ -644,19 +650,24 @@ BabylonScene.prototype = {
             this.turnOnLight();
           }
         }
-
-        if (i == a.length - 1) console.log("debug: distance", this.distance);
-
+        if (
+          this.distance >= TARGET_DISTANCE &&
+          this.lastState != ANIMATION_STATE.ROTATION
+        ) {
+          this.distance = TARGET_DISTANCE;
+          this.state = ANIMATION_STATE.ROTATION;
+        }
         const position = this.primaryPositions[i].clone();
         ob.position2 = position.add(ob.direction1.scale(this.distance));
         const params1 = this.getAnimationParamsByPosition(
           ob.position2,
-          1.0,
+          0.5,
           Power0.easeNone
         );
         tl.to(item.position, params1, "someLabel");
       }
     }
+    this.lastState = this.state;
   },
 };
 
