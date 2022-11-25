@@ -10,6 +10,7 @@ import './index.scss'
 import RadioSelect from "../RadioGroup";
 import { ArrowButton } from "../../theme/components";
 import { useNavigate, Link } from "react-router-dom";
+import gsap from "gsap";
 
 const Wrapper = styled.div`
     width: 40%;
@@ -23,6 +24,38 @@ const Wrapper = styled.div`
         font-weight: 900;
     }
 `
+const RotateIcon = styled.div`
+    .love-icon {
+        transform: rotateY(0deg);
+        animation: rotateAnimation1 4s linear infinite;
+    }
+
+    .cake-icon {
+        transform: rotateY(30deg);
+        animation: rotateAnimation2 4s linear infinite;
+    }
+
+    .sport-icon {
+        transform: rotateY(60deg);
+        animation: rotateAnimation3 4s linear infinite;
+    }
+
+    @keyframes rotateAnimation1 {
+        from {transform: rotateY(0deg);}
+        to {transform: rotateY(360deg);}
+    }
+    
+    @keyframes rotateAnimation2 {
+        from {transform: rotateY(30deg);}
+        to {transform: rotateY(390deg);}
+    }
+    
+    @keyframes rotateAnimation3 {
+        from {transform: rotateY(60deg);}
+        to {transform: rotateY(420deg);}
+    }
+`
+
 
 export const VideoCarousel = () => {
     const navigate = useNavigate()
@@ -39,71 +72,18 @@ export const VideoCarousel = () => {
     useEffect(() => {
         const brain3DApplication = (window as any).brain3DApplication
         brain3DApplication.turnOffLight();
+        let tl = gsap.timeline({});
+        tl.to(".love-icon", {repeat: -1, duration: 1,  y:360, ease: Power0.easeNone});
     }, [])
 
     return (
         <Wrapper className={`fixed top-0 left-0 z-50 w-screen h-screen flex flex-col justify-center items-center p-6`}>
-            {/* <div className="l-container | relative text-center">
-                <Swiper
-                    centeredSlides
-                    slidesPerView={'auto'}
-                    effect={'slide'}
-                    grabCursor={false}
-                    draggable={false}
-                    loop={false}
-                    loopedSlides={1}
-                    initialSlide={1}
-                    navigation={false}
-                    pagination={false}
-                    className="js-swiper-videos swiper"
-                    onTransitionEnd={(swiper: any) => {
-                        var activeIndex = swiper.activeIndex;
-                        var activeSlide = document.getElementsByClassName('swiper-slide')[activeIndex];
-                        var activeSlideVideo = activeSlide.getElementsByTagName('video')[0];
-                        activeSlideVideo.play();
-                    }}
-                >
-                    <SwiperSlide className="swiper-slide">
-                        <video className="swiper-slide__video | object-cover w-full h-full" preload="metadata" muted autoPlay
-                            poster="/assets/posters/video_poster_tpb_cake.jpg" 
-                            onEnded={onPlayEnd}
-                        >
-                            <source src="/assets/videos/webm/video_tpb_choc_cake.webm" type="video/webm" />
-                            <source src="/assets/videos/mp4/video_tpb_choc_cake.mp4" type="video/mp4" />
-                        </video>
-                    </SwiperSlide>
-
-                    <SwiperSlide className="swiper-slide">
-                        <video className="swiper-slide__video | object-cover w-full h-full" preload="metadata" muted
-                            poster="/assets/posters/video_poster_tpb_cake.jpg"
-                            onEnded={onPlayEnd}
-                        >
-                            <source src="/assets/videos/webm/video_tpb_choc_cake.webm" type="video/webm" />
-                            <source src="/assets/videos/mp4/video_tpb_choc_cake.mp4" type="video/mp4" />
-                        </video>
-                    </SwiperSlide>
-
-                    <SwiperSlide className="swiper-slide">
-                        <video className="swiper-slide__video | object-cover w-full h-full" preload="metadata" muted
-                            poster="/assets/posters/video_poster_tpb_cake.jpg"
-                            onEnded={moveToNextPage}
-                        >
-                        <source src="/assets/videos/webm/video_tpb_choc_cake.webm" type="video/webm" />
-                        <source src="/assets/videos/mp4/video_tpb_choc_cake.mp4" type="video/mp4" />                  
-                        </video>
-                    </SwiperSlide>
-                </Swiper>
-
-                <h2>
-                    The more porn you watch, the more you increase your chances of dampening the rewarding feeling you can get from other pleasures.
-                </h2>
-            </div> */}
             <div className="container | relative text-start text-white mt-32">
                 <div className="flex mb-16">
-                    <div className="flex-none">
-                        <img className="w-24 h-20 mr-6" src="/assets/images/love.png" alt = "cake" />
-                    </div>
-                    <div className="flex-inital w-64">
+                    <RotateIcon className="flex-none">
+                        <img className="love-icon w-24 h-20" src="/assets/images/love.png" alt = "love" />
+                    </RotateIcon>
+                    <div className="ml-6 flex-inital w-64">
                         <h5 className="text-xl pb-3 font-bold" style={{fontSize: "40px"}}>
                             INTIMACY
                         </h5>
@@ -113,10 +93,10 @@ export const VideoCarousel = () => {
                     </div>
                 </div>
                 <div className="flex mb-16">
-                    <div className="flex-none">
-                        <img className="w-24 h-20 mr-6" src="/assets/images/cake.png" alt = "cake" />
-                    </div>
-                    <div className="flex-inital" style={{width: "200px"}}>
+                    <RotateIcon className="flex-none">
+                        <img className="cake-icon w-24 h-20 mr-6" src="/assets/images/cake.png" alt = "cake" />
+                    </RotateIcon>
+                    <div className="ml-6 flex-inital" style={{width: "200px"}}>
                         <h5 className="text-xl pb-3 font-bold" style={{fontSize: "40px"}}>
                         TREATS
                         </h5>
@@ -126,10 +106,10 @@ export const VideoCarousel = () => {
                     </div>
                 </div>
                 <div className="flex mb-8">
-                    <div className="flex-none">
-                        <img className="w-24 h-20 mr-6" src="/assets/images/sport.png" alt = "cake" />
-                    </div>
-                    <div className="flex-inital" style={{width: "200px"}}>
+                    <RotateIcon className="flex-none">
+                        <img className="sport-icon w-24 h-20 mr-6" src="/assets/images/sport.png" alt = "cake" />
+                    </RotateIcon>
+                    <div className="ml-6 flex-inital" style={{width: "200px"}}>
                         <h5 className="text-xl pb-3 font-bold" style={{fontSize: "40px"}}>
                             EXERCISE
                         </h5>
