@@ -1,16 +1,16 @@
-import { useEffect, useState } from "react"
-import { questionInfo } from "../../constants"
-import { ArrowButton } from "../../theme/components"
-import QuestionComponent from "./component"
 import gsap from "gsap";
+import { useEffect, useState } from "react";
+import { questionInfo } from "../../constants";
+import { ArrowButton } from "../../theme/components";
+import QuestionComponent from "./component";
 
 
 export const QuestionComponents = ({ setSubName }: any) => {
     const [ ageValue, setAgeValue ] = useState(72)
     const [ firstSawValue, setFirstSawValue ] = useState(25)
     const [ watchHrsValue, setWatchHrsValue ] = useState(0)
-    const [ hardcoreValue, setHardcoreValue ] = useState(2)
-    const [ agitatedValue, setAgitatedValue ] = useState(0)
+    const [ hardcoreValue, setHardcoreValue ] = useState(-1)
+    const [ agitatedValue, setAgitatedValue ] = useState(-1)
     const [ focusedControl, setFocusedControl ] = useState("none") 
 
     useEffect(() => {
@@ -37,25 +37,25 @@ export const QuestionComponents = ({ setSubName }: any) => {
     return (
         <div className="w-full">
             <div className="grid grid-cols-10">
-                <div className="col-span-6 flex justify-center 2xl:-mb-12 -mr-6">
-                    <div className="flex items-end h-full text-base">
+                <div className="col-span-6 flex justify-center -mr-6">
+                    <div className="flex items-start text-base">
                         {
-                            focusedControl == "none" ? (
+                            focusedControl === "none" ? (
                                 <></>
                             ) : focusedControl == "firstSaw" ? (
-                            <div className="z-20 flex rounded border border-white p-4 text-white max-w-md text-center">
+                            <div className="z-20 flex rounded border border-white p-4 text-white max-w-md text-center absolute bottom-20 md:bottom-24 left-[5%] sm:left-[10%] md:left-[12%] xl:left-[18%]">
                                 Early exposure to pornography can increase risky sexual behaviour and hypersexuality in adults.
                             </div>
                             ) : focusedControl == "watchHrs" ? (
-                            <div className="z-20 flex rounded border border-white p-4 text-white max-w-md text-center">
+                            <div className="z-20 flex rounded border border-white p-4 text-white max-w-md text-center absolute bottom-20 md:bottom-24 left-[5%] sm:left-[10%] md:left-[12%] xl:left-[18%]">
                                 Daily exposure to porn can lead to dependency and addiction. 
                             </div>
                             ) : focusedControl == "hardcore" ? (
-                            <div className="z-20 flex rounded border border-white p-4 text-white max-w-md text-center">
+                            <div className="z-20 flex rounded border border-white p-4 text-white max-w-md text-center absolute bottom-20 md:bottom-24 left-[5%] sm:left-[10%] md:left-[12%] xl:left-[18%]">
                                 Regularly watching different genres of porn is a sign of porn dependency. 
                             </div>
                             ) : (
-                            <div className="z-20 flex rounded border border-white p-4 text-white max-w-md text-center">
+                            <div className="z-20 flex rounded border border-white p-4 text-white max-w-md text-center absolute bottom-20 md:bottom-24 left-[5%] sm:left-[10%] md:left-[12%] xl:left-[18%]">
                                 Experiencing stress when you avoid porn is a sign of porn dependency.  
                             </div>
                             )

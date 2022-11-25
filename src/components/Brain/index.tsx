@@ -62,7 +62,7 @@ export const Brain = () => {
                             <Loader />
                         </LoaderWrapper>
                     ) : (
-                        <div className="w-full h-full mt-52">
+                        <div className="w-full h-full mt-0 md:mt-20 lg:mt-32">
                             { subName === 'question' ? (
                                 <QuestionComponents setSubName={(val: any) => setSubName(val)} />
                             ) : subName === 'result1' ? (
