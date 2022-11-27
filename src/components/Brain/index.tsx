@@ -1,15 +1,14 @@
+import { gsap } from "gsap"
+import { CustomEase } from "gsap/CustomEase"
 import { useEffect, useState } from "react"
 import styled from "styled-components"
 import { usePagination } from "../../pages/Context"
-import Discover from "../../pages/Discover"
 import Header from "../Header"
 import Loader from "../Loader"
 import QuestionComponents from "../QuestionComponents"
 import Scene from "../Scene"
 import { VideoCarousel } from "../VideoCarousel"
 import ResultContent from "./resultContent"
-import { gsap } from "gsap";
-import { CustomEase } from "gsap/CustomEase";
 
 gsap.registerEffect({
     name: "zoom",
@@ -105,8 +104,6 @@ export const Brain = () => {
                                     setSubName={(val: any) => setSubName(val)}
                                     first={false}
                                 />
-                            ) : subName === 'discover' ? (
-                                <Discover setSubName={(val: any) => setSubName(val)} />
                             ) : subName === 'video' ? (
                                 <VideoCarousel />
                             ) : null }

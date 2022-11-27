@@ -1,20 +1,17 @@
-import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Pages from './pages';
 
 function App() {
-  useEffect(() => {
-    const updateCursor = (e: any)=> {
-      const mouseX = e.clientX - 12;
-      const mouseY = e.clientY - 10;
-      const cursor: any =  document.querySelector('.mouse_scroll');
-      if(!cursor) return;
-      cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
-    }
-    window.addEventListener('mousemove', updateCursor);
-  }, []);
+  const updateCursor = (e: any)=> {
+    const mouseX = e.clientX - 12;
+    const mouseY = e.clientY + 4;
+    const cursor: any =  document.querySelector('.mouse_scroll');
+    if(!cursor) return;
+    cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+  }
+    
   return (
-    <div className="App">
+    <div className="App" onMouseMove={updateCursor}>
       <div className="mouse_scroll">
           <div className="mouse">
             <div className="wheel"></div>

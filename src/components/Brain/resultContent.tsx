@@ -44,7 +44,7 @@ export const ResultContent = ({ first, setSubName }: any) => {
     const handler = () => {
         if(first) return;
         nextPage();
-        setSubName("discover");
+        setSubName("video");
     }
     const addEventListener = useWheelEvent(handler);
 
@@ -74,7 +74,7 @@ export const ResultContent = ({ first, setSubName }: any) => {
                         `Keep scrolling to see what happens to your brain's dopamine rewards system when you watch porn.` : 
                         `This is your brain's dopamine rewards system. It is activated when you experience something you find pleasurable and rewarding.`
                     ) : (
-                        `When you regularly watch porn for pleasure you run the risk of damaging your dopamine rewards system. This means you increase the chances of dampening or even losing the rewarding feeling you get from other normally pleasurable experiences in life.`
+                        `When you regularly watch porn you risk damaging your dopamine rewards system. This means you increase the chances of dampening or even losing the rewarding feeling you get from other normally pleasurable experiences in life.`
                     ) }
                 </p>
             </Wrapper>

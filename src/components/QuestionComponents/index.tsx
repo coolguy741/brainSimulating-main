@@ -67,7 +67,7 @@ export const QuestionComponents = ({ setSubName }: any) => {
                         }
                     </div>
                 </div>
-                <div className="col-span-4 mt-32">
+                <div className="col-span-4 mt-24">
                     <div className="z-20 flex flex-col justify-center h-full relative animator opacity-0">
                         <QuestionComponent
                             info={questionInfo[1]}
