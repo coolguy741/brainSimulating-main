@@ -8,7 +8,24 @@ import QuestionComponents from "../QuestionComponents"
 import Scene from "../Scene"
 import { VideoCarousel } from "../VideoCarousel"
 import ResultContent from "./resultContent"
+import { gsap } from "gsap";
+import { CustomEase } from "gsap/CustomEase";
 
+gsap.registerEffect({
+    name: "zoom",
+    effect: (targets: any, config: any) => {
+      const vars = {transformOrigin: "0px 0px", ...config},
+            { scale, origin } = config,
+            clamp = gsap.utils.clamp(-100 * (scale - 1), 0);
+      delete vars.origin;
+      vars.xPercent = clamp((0.5 - origin[0] * scale) * 100);
+      vars.yPercent = clamp((0.5 - origin[1] * scale) * 100);
+      vars.overwrite = "auto";
+      return gsap.to(targets, vars);
+    },
+    extendTimeline: true,
+    defaults: {origin: [0.5, 0.5], scale: 2}
+  });
 
 const BackDrop = styled.div`
     // background-color: #ef1023;
@@ -48,7 +65,21 @@ export const Brain = () => {
     const [delay, setDelay] = useState(0)
     useEffect(() => {
         setTimeout(() => setDelay(11), 7000);
-    })
+        gsap.effects.zoom(".logo-background", {
+            scale: 1.2,
+            origin: [0.5, 0.5],
+            duration: 0,
+            ease: "power1.inOut"
+        });
+
+        gsap.effects.zoom(".logo-background", {
+            scale: 1.0,
+            origin: [0.5, 0.5],
+            duration: 5,
+            ease: CustomEase.create("custom", "M0,0,C0,0,0.275,0,0.376,0,0.406,0,0.752,1,0.8,1,0.846,1,1,1,1,1"),
+        });
+        
+    }, [])
 
     return (
         <div>
@@ -57,7 +88,7 @@ export const Brain = () => {
                     <Scene setLoadComplete={ () => { setLoadComplete(true); nextPage(); } } />
                     { !loadComplete || delay < 10 ? (
                         <LoaderWrapper className={'h-full | flex flex-col | p-6'}>
-                            <BackDrop className="fixed top-0 left-0 w-full h-full z-10" />
+                            <BackDrop className="logo-background fixed top-0 left-0 w-full h-full z-10" />
                             <Loader />
                         </LoaderWrapper>
                     ) : (
