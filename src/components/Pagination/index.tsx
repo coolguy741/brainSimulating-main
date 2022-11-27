@@ -6,9 +6,9 @@ const Pagination = ({ total } : any) => {
     const [ curPage ] = pageContext;
     const items = Array(total).fill(0);
     return (
-        <div className="w-full flex flex-col space-y-2 items-center justify-center absolute bottom-12">
+        <div className="w-full flex flex-col space-y-2 items-center justify-center absolute bottom-4">
             {
-                curPage < total - 1 && <div className="mouse_scroll">
+                curPage < total - 1 && <div className="mouse_scroll scale-75">
                     <div className="mouse">
                         <div className="wheel"></div>
                     </div>
@@ -23,7 +23,7 @@ const Pagination = ({ total } : any) => {
             <div className="flex space-x-2 p-2">
             {
                 items.map((item, index) => {
-                    return <div key={index} className={`w-2 h-2 rounded-full shadow-md transition-all ${index + 1 == curPage ? 'bg-white' : 'bg-[#ffffff66]'}`}></div>;
+                    return <div key={index} className={`w-1 h-1 rounded-full shadow-md transition-all ${index + 1 == curPage ? 'bg-white' : 'bg-[#ffffff66]'}`}></div>;
                 })                
             }
             </div>
