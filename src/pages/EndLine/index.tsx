@@ -1,11 +1,6 @@
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-    background: #FC31DA;
-    background-image: url('/assets/images/Brain background.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
 
     .App__logo {
         max-width: 200px;
@@ -22,7 +17,7 @@ const Wrapper = styled.div`
 export const EndLine = () => {
     return (
         <Wrapper className="w-full h-full flex flex-col justify-center items-center text-white">
-             <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-4">
                 <div>
                     <svg className="App__logo" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"
                         xmlSpace="preserve" viewBox="0 0 407 404">
@@ -92,6 +87,13 @@ export const EndLine = () => {
                     </li>
                 </ul>
             </div>
+            <video
+                autoPlay
+                loop
+                muted
+                className="absolute top-0 -z-10 w-auto min-w-full min-h-full max-w-none ">
+                <source src='/assets/movies/Background6.mov' type="video/mp4"/>
+            </video>
         </Wrapper>
     )
 }
