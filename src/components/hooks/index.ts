@@ -2,10 +2,10 @@ import gsap from "gsap";
 import { useRef } from 'react';
 
 const useDisplayText = () => {
-    const displayText = () => {
+    const displayText = (selector = '.animator') => {
         var timeline = gsap.timeline({});
-        timeline.to('.animator', {opacity:0, y:200, duration: 0});
-        timeline.to('.animator', {opacity:1, y:0, duration: 1.5});
+        timeline.to(selector, {opacity:0, y:200, duration: 0});
+        timeline.to(selector, {opacity:1, y:0, duration: 1.5});
     }
     return displayText;
 }
@@ -22,7 +22,7 @@ const useWheelEvent = (handler: () => void ) => {
             window.addEventListener("wheel", (e: any) => {
                 handleWheelEvent();
             }, {passive: true});
-        }, 3000);
+        }, 2000);
     }
 
     return addEventListener;

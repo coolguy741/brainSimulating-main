@@ -40,9 +40,9 @@ export const EndLine = () => {
                         <path fill="none" stroke="#FFF" strokeMiterlimit="10" strokeWidth="12" d="M22.9 22H384v358.5H22.9z" />
                     </svg>
                 </div>
-                <div>
+                {/* <div>
                     <img className="max-h-[160px]" src={'/assets/images/neurify.png'} />
-                </div>
+                </div> */}
             </div>
 
             <div className="text-center text-5xl my-8">

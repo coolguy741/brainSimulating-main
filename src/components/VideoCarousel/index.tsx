@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import 'swiper/css';
@@ -23,12 +23,27 @@ const Wrapper = styled.div`
 `
 
 export const VideoCarousel = () => {
+    const step = useRef<number>(1);
     const navigate = useNavigate()
     const [ nextPage ] = usePagination();
     const displayText = useDisplayText();
     const moveToNextPage = () => {
-        nextPage();
-        navigate('/encourage')
+        if(step.current === 1) {
+            displayText('.treats');
+            setTimeout(() => {
+                step.current = 2;
+            }, 1000);
+        }
+        else if(step.current === 2) {
+            displayText('.exercise');
+            setTimeout(() => {
+                step.current = 3;
+            }, 1000);
+        } 
+        else if(step.current === 3) {
+            nextPage();
+            navigate('/encourage')
+        }
     }
 
     const addEventListener = useWheelEvent(moveToNextPage);
@@ -41,14 +56,14 @@ export const VideoCarousel = () => {
     useEffect(() => {
         const brain3DApplication = (window as any).brain3DApplication
         brain3DApplication.turnOffLight();
-        displayText();
+        displayText('.intimacy');
         addEventListener();
     }, [])
 
     return (
         <Wrapper className={`fixed top-0 left-0 z-50 w-screen h-screen flex flex-col justify-center items-center p-6`}>
-            <div className="container | relative text-start text-white mt-32 animator">
-                <div className="flex items-center mb-16">
+            <div className="container | relative text-start text-white mt-32">
+                <div className="flex items-center mb-16 intimacy opacity-0">
                     <img className="w-32 h-32" src="/assets/images/love.gif" alt = "love" />
                     <div className="ml-6 flex-inital w-64">
                         <h5 className="text-xl pb-3 font-bold" style={{fontSize: "40px"}}>
@@ -59,7 +74,7 @@ export const VideoCarousel = () => {
                         </p>
                     </div>
                 </div>
-                <div className="flex items-center mb-16">
+                <div className="flex items-center mb-16 treats opacity-0">
                     <img className="w-32 h-32" src="/assets/images/cake.gif" alt = "cake" />
                     <div className="ml-6 flex-inital" style={{width: "200px"}}>
                         <h5 className="text-xl pb-3 font-bold" style={{fontSize: "40px"}}>
@@ -70,7 +85,7 @@ export const VideoCarousel = () => {
                         </p>
                     </div>
                 </div>
-                <div className="flex items-center mb-8">
+                <div className="flex items-center mb-8 exercise opacity-0">
                     <img className="w-32 h-32" src="/assets/images/sport.gif" alt = "cake" />
                     <div className="ml-6 flex-inital" style={{width: "200px"}}>
                         <h5 className="text-xl pb-3 font-bold" style={{fontSize: "40px"}}>

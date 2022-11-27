@@ -28,7 +28,7 @@ export const Pages = () => {
                     <Route path="*" element={<Navigate to="/" />}/>
                 </Routes>
             </PageTransition>
-            <Pagination total={9} />
+            <Pagination total={8} />
         </PageContext.Provider>
         
     )
