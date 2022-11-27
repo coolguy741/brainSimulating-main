@@ -1,7 +1,9 @@
+import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import Header from "../../components/Header"
-import { ArrowButton } from "../../theme/components"
+import { useDisplayText, useWheelEvent } from "../../components/hooks"
+import { usePagination } from "../Context"
 
 const Wrapper = styled.div`
     position: relative;
@@ -39,18 +41,29 @@ const ContentWrapper = styled.div`
 
 export const Encourage = () => {
     const navigate = useNavigate();
+    const [nextPage] = usePagination();
+    const displayText = useDisplayText();
+    const handler = () => {
+        nextPage();
+        navigate('/end');
+    }
+    const addEventListener = useWheelEvent(handler);
+
+    useEffect(() => {
+        displayText();
+        addEventListener();
+    }, []);
+
     return (
         <div>
             <Wrapper className={`w-screen h-screen`}>
                 <div className='w-full h-full mx-auto p-6'>
                     <div className='w-full h-full relative'>
                         <Header />
-                        
                         <IntroWrapper className={`relative mt-auto mb-auto font-Roboto flex justify-center items-center w-full h-full p-8 z-50`}>
-                            <div className="l-container relative w-full">
+                            <div className="l-container relative w-full animator">
                                 <ContentWrapper>
                                     <p className="text-5xl leading-[3.5rem] font-bold text-black mb-2">The good news is, studies show that if you stop watching porn, your dopamine rewards system gradually resets to normal levels, so you can start to enjoy life’s pleasures more.</p>
-                                    <ArrowButton className={'mt-4'} onClickCallback={() => navigate('/end')}>Next</ArrowButton>
                                 </ContentWrapper>
                             </div>
                         </IntroWrapper>

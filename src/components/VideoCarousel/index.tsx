@@ -1,11 +1,12 @@
 import { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { ArrowButton } from "../../theme/components";
+import { usePagination } from "../../pages/Context";
+import { useDisplayText, useWheelEvent } from "../hooks";
 import './index.scss';
 
 const Wrapper = styled.div`
@@ -23,24 +24,30 @@ const Wrapper = styled.div`
 
 export const VideoCarousel = () => {
     const navigate = useNavigate()
+    const [ nextPage ] = usePagination();
+    const displayText = useDisplayText();
+    const moveToNextPage = () => {
+        nextPage();
+        navigate('/encourage')
+    }
+
+    const addEventListener = useWheelEvent(moveToNextPage);
 
     const onPlayEnd = () => {
         const swiper = (document.getElementsByClassName('js-swiper-videos')[0] as any).swiper
         swiper.slideNext()
     }
 
-    const moveToNextPage = () => {
-        navigate('/encourage')
-    }
-
     useEffect(() => {
         const brain3DApplication = (window as any).brain3DApplication
         brain3DApplication.turnOffLight();
+        displayText();
+        addEventListener();
     }, [])
 
     return (
         <Wrapper className={`fixed top-0 left-0 z-50 w-screen h-screen flex flex-col justify-center items-center p-6`}>
-            <div className="container | relative text-start text-white mt-32">
+            <div className="container | relative text-start text-white mt-32 animator">
                 <div className="flex items-center mb-16">
                     <img className="w-32 h-32" src="/assets/images/love.gif" alt = "love" />
                     <div className="ml-6 flex-inital w-64">
@@ -73,11 +80,6 @@ export const VideoCarousel = () => {
                             Rigorous exercise doesn't give you the same level of high that you hope for
                         </p>
                     </div>
-                </div>
-                <div className="flex">
-                    <Link to={'/encourage'}>
-                        <ArrowButton>Next</ArrowButton>
-                    </Link>
                 </div>
             </div>
         </Wrapper>

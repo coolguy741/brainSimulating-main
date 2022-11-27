@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom"
+import { useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
-import { ArrowButton } from "../../theme/components"
+import { usePagination } from "../../pages/Context"
+import { useDisplayText, useWheelEvent } from "../hooks"
 
 const IntroWrapper = styled.div`
     position: relative;
@@ -15,16 +17,26 @@ const ContentWrapper = styled.div`
 `
 
 export const Intro = () => {
+    const navigate = useNavigate();
+    const [ nextPage ] = usePagination();
+    const handler = () => {
+        nextPage();
+        navigate('/brain');
+    }
+
+    const displayText = useDisplayText();
+    const addEventListener = useWheelEvent(handler);
+
+    useEffect(() => {
+        displayText();
+        addEventListener();
+    }, []);
+
     return (
         <IntroWrapper className={`relative mt-auto mb-auto font-Roboto flex justify-center items-center w-full h-full p-8`}>
             <div className="l-container relative w-full">
-                <ContentWrapper>
+                <ContentWrapper className="animator">
                     <p className="text-5xl leading-[3rem] font-semibold text-black mb-32">Did you know that watching porn changes your brain chemistry?</p>
-
-
-                    <Link to={'/brain'}>
-                        <ArrowButton>Next</ArrowButton>
-                    </Link>
                 </ContentWrapper>
             </div>
         </IntroWrapper>

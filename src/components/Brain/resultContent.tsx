@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from "react"
-import styled from "styled-components"
-import { ArrowButton } from "../../theme/components"
+import { useEffect, useRef, useState } from "react";
+import styled from "styled-components";
+import { usePagination } from "../../pages/Context";
+import { useDisplayText, useWheelEvent } from "../hooks";
 
 const Wrapper = styled.div`
     width: 35%;
@@ -32,27 +33,41 @@ const NormalButton = styled.button`
 export const ResultContent = ({ first, setSubName }: any) => {
     const [scrolling, setScrolling] = useState<boolean>(false);
     const isScrollSet = useRef<boolean>(false);
+    const displayText = useDisplayText();
+    const [ nextPage ] = usePagination();
     
+    const onClickNextButton = () => {
+        nextPage();
+        setSubName('question')
+    }
+
+    const handler = () => {
+        if(first) return;
+        nextPage();
+        setSubName("discover");
+    }
+    const addEventListener = useWheelEvent(handler);
+
     useEffect(() => {
         const brain3DApplication = (window as any).brain3DApplication
         brain3DApplication.onKeepScrolling = () => {
             if(isScrollSet.current) return;
             isScrollSet.current = true;
-            console.log("Debug: Next Button");
             setScrolling(true);
+            displayText();
             setTimeout(() => {
                 onClickNextButton();
             }, 2000);
         }
+        displayText();     
+        addEventListener();   
     }, []);
-
-    const onClickNextButton = () => {
-        setSubName( first ? 'question' : 'discover')
-    }
+    
+    
 
     return (
         <div className="h-screen | flex flex-col | p-6">
-            <Wrapper className="z-10 ml-auto mb-auto mt-24">
+            <Wrapper className="z-10 ml-auto mb-auto mt-24 animator">
                 <p className="contentText text-lg font-light leading-8">
                     { first ? (
                         scrolling ? 
@@ -62,14 +77,6 @@ export const ResultContent = ({ first, setSubName }: any) => {
                         `When you regularly watch porn for pleasure you run the risk of damaging your dopamine rewards system. This means you increase the chances of dampening or even losing the rewarding feeling you get from other normally pleasurable experiences in life.`
                     ) }
                 </p>
-
-                <div className="w-full">
-                    {
-                        !first && <ArrowButton className="flex justify-center items-center" onClickCallback={onClickNextButton}>
-                            Explore
-                        </ArrowButton>
-                    }
-                </div>
             </Wrapper>
         </div>
     )

@@ -545,7 +545,7 @@ BabylonScene.prototype = {
     this.scene.environmentTexture = this.hdrTexture;
     this.scene.environmentTexture.rotationY = 3.913;
     this.scene.environmentIntensity = 1.45;
-    this.changeBackgroundColor("#777777");
+    this.changeBackgroundColor("#437EAA");
     window.addEventListener("keydown", this.keyListener);
     this.engine.runRenderLoop(this.onRenderLoop.bind(this));
     window.addEventListener("resize", this.onWindowResize.bind(this));

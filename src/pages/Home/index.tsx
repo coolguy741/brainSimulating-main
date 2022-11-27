@@ -1,6 +1,6 @@
-import styled from 'styled-components'
-import Header from '../../components/Header'
-import Intro from '../../components/Intro'
+import styled from 'styled-components';
+import Header from '../../components/Header';
+import Intro from '../../components/Intro';
 
 const Wrapper = styled.div`
     position: relative;

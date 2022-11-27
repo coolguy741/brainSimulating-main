@@ -1,7 +1,7 @@
-import gsap from "gsap";
 import { useEffect, useState } from "react";
 import { questionInfo } from "../../constants";
-import { ArrowButton } from "../../theme/components";
+import { usePagination } from "../../pages/Context";
+import { useDisplayText, useWheelEvent } from "../hooks";
 import QuestionComponent from "./component";
 
 
@@ -12,6 +12,15 @@ export const QuestionComponents = ({ setSubName }: any) => {
     const [ hardcoreValue, setHardcoreValue ] = useState(-1)
     const [ agitatedValue, setAgitatedValue ] = useState(-1)
     const [ focusedControl, setFocusedControl ] = useState("none") 
+    const [nextPage] = usePagination();
+    const displayText = useDisplayText();
+
+    const handler = () => {
+        nextPage();
+        setSubName("result2");
+    }
+
+    const addEventListener = useWheelEvent(handler)
 
     useEffect(() => {
         const brain3DApplication = (window as any).brain3DApplication
@@ -26,12 +35,8 @@ export const QuestionComponents = ({ setSubName }: any) => {
     }, [ageValue, firstSawValue, watchHrsValue, hardcoreValue, agitatedValue])
 
     useEffect(() => {
-        console.log("Question");
-        var tl = gsap.timeline({});
-        tl.to('.control-tools', {opacity:0, y:100, duration: 0});
-        tl.to('.control-tools', {opacity:1, y:-100, duration: 0.5});
-        // const brain3DApplication = (window as any).brain3DApplication
-        // brain3DApplication.resetBrain();
+        displayText();
+        addEventListener();
     }, []);
 
     return (
@@ -63,7 +68,7 @@ export const QuestionComponents = ({ setSubName }: any) => {
                     </div>
                 </div>
                 <div className="col-span-4 mt-32">
-                    <div className="z-20 flex flex-col justify-center h-full relative control-tools opacity-0">
+                    <div className="z-20 flex flex-col justify-center h-full relative animator opacity-0">
                         <QuestionComponent
                             info={questionInfo[1]}
                             value={firstSawValue}
@@ -96,10 +101,6 @@ export const QuestionComponents = ({ setSubName }: any) => {
                             value={ageValue}
                             setValue={(val: any) => {setAgeValue(val); setFocusedControl("none");}}
                         />
-
-                        <div className="ml-4">
-                            <ArrowButton className={'mt-4'} onClickCallback={() => setSubName('result2')}>Next</ArrowButton>
-                        </div>
                     </div>
                 </div>
             </div>
