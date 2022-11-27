@@ -19,11 +19,8 @@ export const Intro = () => {
         <IntroWrapper className={`relative mt-auto mb-auto font-Roboto flex justify-center items-center w-full h-full p-8`}>
             <div className="l-container relative w-full">
                 <ContentWrapper>
-                    <p className="text-5xl leading-[3rem] font-semibold text-black mb-6">Did you know that watching porn changes your brain chemistry?</p>
+                    <p className="text-5xl leading-[3rem] font-semibold text-black mb-32">Did you know that watching porn changes your brain chemistry?</p>
 
-                    <p className="text-4xl leading-[3rem] font-semibold text-white">
-                        We’re about to simulate the effect porn has on your brain.
-                    </p>
 
                     <Link to={'/brain'}>
                         <ArrowButton>Next</ArrowButton>
