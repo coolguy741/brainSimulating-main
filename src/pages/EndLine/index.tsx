@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
 const Wrapper = styled.div`
+    background: #FC31DA;
+    background-image: url('/assets/images/Brain_CU.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 
     .App__logo {
         max-width: 200px;
@@ -87,13 +92,6 @@ export const EndLine = () => {
                     </li>
                 </ul>
             </div>
-            <video
-                autoPlay
-                loop
-                muted
-                className="absolute top-0 -z-10 w-auto min-w-full min-h-full max-w-none ">
-                <source src='/assets/movies/Background6.mov' type="video/mp4"/>
-            </video>
         </Wrapper>
     )
 }
