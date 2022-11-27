@@ -15,7 +15,7 @@ export const Pages = () => {
     return (
         <PageContext.Provider value={[curPage, setCurPage]}>
             <PageTransition
-                preset={"scaleDownScaleDown"}
+                preset={"moveToLeftFromRight"}
                 transitionKey={location.pathname}
                 enterAnimation={""}
                 exitAnimation={""}
