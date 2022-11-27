@@ -222,11 +222,10 @@ html, body, #root {
 
 .mouse_scroll {
 	display: block;
-	margin: 0 auto;
 	width: 24px;
-  height: 220px;
   position: fixed;
   z-index: 9999;
+  transform: rotateX(180deg) rotateY(180deg);
 }
 
 

@@ -8,7 +8,7 @@ const Pagination = ({ total } : any) => {
     return (
         <div className="w-full flex flex-col space-y-2 items-center justify-center absolute bottom-4">
             {
-                curPage < total - 1 && <div className="mouse_scroll scale-75">
+                curPage < total - 1 && <div className="mouse_scroll scale-75 mb-[110px]">
                     <div className="mouse">
                         <div className="wheel"></div>
                     </div>
