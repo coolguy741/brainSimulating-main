@@ -21,7 +21,6 @@ $ease-in-out-sine: cubic-bezier(0.45, 0.05, 0.55, 0.95);
 
 html, body, #root {
   height: 100%;
-  cursor: none;
 }
 
 .App {
@@ -225,6 +224,7 @@ html, body, #root {
 	display: block;
 	margin: 0 auto;
 	width: 24px;
+  height: 220px;
   position: fixed;
   z-index: 9999;
 }
