@@ -76,13 +76,13 @@ BabylonScene.prototype = {
     }
   },
   setHighLight: function (state) {
-    if (state === true) {
-      this.highlightLayer = new BABYLON.HighlightLayer("highlight", this.scene);
-    } else {
-      if (this.highlightLayer !== null && this.highlightLayer !== undefined) {
-        this.highlightLayer.dispose();
-      }
-    }
+    // if (state === true) {
+    //   this.highlightLayer = new BABYLON.HighlightLayer("highlight", this.scene);
+    // } else {
+    //   if (this.highlightLayer !== null && this.highlightLayer !== undefined) {
+    //     this.highlightLayer.dispose();
+    //   }
+    // }
   },
 
   setBloom: function (state) {
@@ -199,18 +199,21 @@ BabylonScene.prototype = {
       var section = this.application.brainSectionData[prop];
       section.node = this.scene.getNodeByName(section.nodeKey);
       section.material = this.scene.getMaterialByName(section.materialKey);
-      if (section.material) {
-        section.material.albedoColor = BABYLON.Color3.FromHexString(
-          section.highlightColor
-        ).toLinearSpace();
-        section.material.emissiveColor = section.material.albedoColor;
-        section.material.emissiveIntensity = 0;
-      }
+      // if (section.material) {
+      //   section.material.albedoColor = BABYLON.Color3.FromHexString(
+      //     section.highlightColor
+      //   ).toLinearSpace();
+      //   section.material.emissiveColor = section.material.albedoColor;
+      //   section.material.emissiveIntensity = 0;
+      // }
       if (section.handleNodeVisibilityWithEffect) {
         section.material.transparencyMode = 2;
         section.material.alpha = 0;
       }
     }
+
+    console.log("Hello");
+
     this.brainMaterial = this.scene.getMaterialByName("brain_mass");
     this.m1 = this.scene.getMaterialByName("dorsolateral_prefrontal_cortex");
     this.m2 = this.scene.getMaterialByName("medial_prefrontal_cortex");
@@ -218,26 +221,25 @@ BabylonScene.prototype = {
     this.m1.depthFunction = BABYLON.Engine.NEVER;
     this.m2.depthFunction = BABYLON.Engine.NEVER;
 
-    this.brainMaterial.transparencyMode = 2;
-    this.brainMaterial.alpha = 1;
-    this.brainMaterial.metallic = 0;
-    this.brainMaterial.needDepthPrePass = true;
+    // this.brainMaterial.transparencyMode = 2;
+    // this.brainMaterial.alpha = 1;
+    // this.brainMaterial.metallic = 0;
+    // this.brainMaterial.needDepthPrePass = true;
 
-    this.brainMaterial.clearCoat.isEnabled = false;
-    this.brainMaterial.ambientTextureStrength = 0;
+    // this.brainMaterial.clearCoat.isEnabled = false;
+    // this.brainMaterial.ambientTextureStrength = 0;
 
     // this.brainMaterial.albedoColor = BABYLON.Color3.FromHexString("#ff00dc").toLinearSpace();
 
-    this.brainMaterial.albedoColor =
-      BABYLON.Color3.FromHexString("#ffffff").toLinearSpace();
-    this.brainMaterial.emissiveColor =
-      BABYLON.Color3.FromHexString("#1B2729").toLinearSpace();
-    this.brainMaterial.subSurface.isRefractionEnabled = false;
-    this.brainMaterial.subSurface.tintColor =
-      BABYLON.Color3.FromHexString("#ff00dc").toLinearSpace();
-    this.brainMaterial.subSurface.tintColorAtDistance = 0;
-    this.brainMaterial.subSurface.volumeIndexOfRefraction = 3;
-
+    // this.brainMaterial.albedoColor =
+    //   BABYLON.Color3.FromHexString("#ffffff").toLinearSpace();
+    // this.brainMaterial.emissiveColor =
+    //   BABYLON.Color3.FromHexString("#1B2729").toLinearSpace();
+    // this.brainMaterial.subSurface.isRefractionEnabled = false;
+    // this.brainMaterial.subSurface.tintColor =
+    //   BABYLON.Color3.FromHexString("#ff00dc").toLinearSpace();
+    // this.brainMaterial.subSurface.tintColorAtDistance = 0;
+    // this.brainMaterial.subSurface.volumeIndexOfRefraction = 3;
     var tl = gsap.timeline({
       onComplete: this.onAnimation1Complete.bind(this),
     });
@@ -255,6 +257,7 @@ BabylonScene.prototype = {
       Back.easeOut,
       delay
     );
+
     tl.from(this.brain.scaling, param1);
 
     let brainSectionData = {};
@@ -310,17 +313,17 @@ BabylonScene.prototype = {
     // this.camera.autoRotationBehavior.idleRotationSpeed = -0.1;
     //this.camera.autoRotationBehavior.targetAlpha = 2.3633;
 
-    this.brainMaterial.albedoColor =
-      BABYLON.Color3.FromHexString("#FF00E6").toLinearSpace();
-    this.brainMaterial.emissiveColor =
-      BABYLON.Color3.FromHexString("#FF00E6").toLinearSpace();
-    this.brainMaterial.diffuseColor =
-      BABYLON.Color3.FromHexString("#FF00E6").toLinearSpace();
-    this.brainMaterial.tintColor =
-      BABYLON.Color3.FromHexString("#FF00E6").toLinearSpace();
-    this.brainMaterial.metallic = 0;
-    this.brainMaterial.roughness = 0.25;
-    this.brainMaterial.alpha = 0.93;
+    // this.brainMaterial.albedoColor =
+    //   BABYLON.Color3.FromHexString("#FF00E6").toLinearSpace();
+    // this.brainMaterial.emissiveColor =
+    //   BABYLON.Color3.FromHexString("#FF00E6").toLinearSpace();
+    // this.brainMaterial.diffuseColor =
+    //   BABYLON.Color3.FromHexString("#FF00E6").toLinearSpace();
+    // this.brainMaterial.tintColor =
+    //   BABYLON.Color3.FromHexString("#FF00E6").toLinearSpace();
+    // this.brainMaterial.metallic = 0;
+    // this.brainMaterial.roughness = 0.25;
+    // this.brainMaterial.alpha = 0.93;
     // this.brainMaterial.isRefractionEnabled = true;
     // this.brainMaterial.indexOfRefraction = 0.1;
 
@@ -331,18 +334,18 @@ BabylonScene.prototype = {
     // this.brainMaterial.subSurface.tintColorAtDistance = 500;
     // this.brainMaterial.subSurface.volumeIndexOfRefraction = 15;
 
-    this.brainMaterial.clearCoat.isEnabled = false;
-    this.brainMaterial.clearCoat.intensity = 0.2;
-    this.brainMaterial.clearCoat.roughness = 0.9;
-    this.brainMaterial.clearCoat.indexOfRefraction = 2;
-    this.brainMaterial.ambientTextureStrength = 1;
+    // this.brainMaterial.clearCoat.isEnabled = false;
+    // this.brainMaterial.clearCoat.intensity = 0.2;
+    // this.brainMaterial.clearCoat.roughness = 0.9;
+    // this.brainMaterial.clearCoat.indexOfRefraction = 2;
+    // this.brainMaterial.ambientTextureStrength = 1;
     // this.brainMaterial.ambientTexture.level = 1.05;
-    this.lightmapBrainTex = new BABYLON.Texture(
-      "brain3dapplication/assets/images/brain_diffuselighting_invert_x1024.jpg"
-    );
-    this.brainMaterial.lightmapTexture = this.lightmapBrainTex;
-    this.brainMaterial.lightmapTexture.level = 0.7;
-    this.brainMaterial.lightmapTexture.vScale = -1;
+    // this.lightmapBrainTex = new BABYLON.Texture(
+    //   "brain3dapplication/assets/images/brain_diffuselighting_invert_x1024.jpg"
+    // );
+    // this.brainMaterial.lightmapTexture = this.lightmapBrainTex;
+    // this.brainMaterial.lightmapTexture.level = 0.7;
+    // this.brainMaterial.lightmapTexture.vScale = -1;
 
     this.t2 = gsap.to(this.brain.scaling, {
       x: 1.005,
@@ -357,9 +360,9 @@ BabylonScene.prototype = {
     var glowTween = gsap.timeline({ repeat: 1, yoyo: true });
     for (var prop in this.application.brainSectionData) {
       let item = this.application.brainSectionData[prop];
-      item.material.emissiveIntensity = 0;
+      // item.material.emissiveIntensity = 0;
       if (item.handleNodeVisibilityWithEffect) {
-        item.material.alpha = 0;
+        // item.material.alpha = 0;
         glowTween.to(
           item.material,
           {
@@ -383,9 +386,9 @@ BabylonScene.prototype = {
       }
     }
 
-    this.brainMaterial.emissiveColor =
-      BABYLON.Color3.FromHexString("#FF00A0").toLinearSpace();
-    this.brainMaterial.emissiveIntensity = 0;
+    // this.brainMaterial.emissiveColor =
+    //   BABYLON.Color3.FromHexString("#FF00A0").toLinearSpace();
+    // this.brainMaterial.emissiveIntensity = 0;
     this.brainIdleAnimation = gsap.from(this.brainMaterial, {
       emissiveIntensity: 0.8 * this.emissiveIntensityScalarForBrainIdle,
       duration: 4,
@@ -545,7 +548,8 @@ BabylonScene.prototype = {
     this.scene.environmentTexture = this.hdrTexture;
     this.scene.environmentTexture.rotationY = 3.913;
     this.scene.environmentIntensity = 1.45;
-    this.changeBackgroundColor("#437EAA");
+    // this.changeBackgroundColor("#437EAA");
+    this.changeBackgroundColor("#ffffff");
     window.addEventListener("keydown", this.keyListener);
     this.engine.runRenderLoop(this.onRenderLoop.bind(this));
     window.addEventListener("resize", this.onWindowResize.bind(this));
@@ -569,7 +573,7 @@ BabylonScene.prototype = {
   },
 
   onMouseWheel: function (e) {
-    if(this.distance == 0 && this.state === ANIMATION_STATE.PUT_TOGETHER) {
+    if (this.distance == 0 && this.state === ANIMATION_STATE.PUT_TOGETHER) {
       this.application.onKeepScrolling();
       this.state = ANIMATION_STATE.NONE;
       return;
@@ -582,7 +586,7 @@ BabylonScene.prototype = {
       e = window.event; // if the event is not provided, we get it from the window object
     }
     if (e.wheelDelta) {
-      delta = -1 * e.wheelDelta / 60; // will work in most cases
+      delta = (-1 * e.wheelDelta) / 60; // will work in most cases
     } else if (e.detail) {
       delta = e.detail / 2; // fallback for Firefox
     }
@@ -665,7 +669,7 @@ BabylonScene.prototype = {
     }
     this.lastState = this.state;
   },
-  resetBrain: function() {
+  resetBrain: function () {
     const tl = gsap.timeline({});
     const items = this.brain.getChildren();
     for (let i = 0; i < items.length; i++) {
@@ -679,7 +683,7 @@ BabylonScene.prototype = {
     }
     console.log(this.primaryPositions);
     this.state = ANIMATION_STATE.NONE;
-  }
+  },
 };
 
 var inherit_1 = Object.create(PublishSubscribe.prototype);
