@@ -554,9 +554,11 @@ BabylonScene.prototype = {
     this.engine.runRenderLoop(this.onRenderLoop.bind(this));
     window.addEventListener("resize", this.onWindowResize.bind(this));
     this.onWindowResize();
-    window.addEventListener("wheel", this.onMouseWheel.bind(this), {
-      passive: true,
-    });
+    setTimeout(() => {
+      window.addEventListener("wheel", this.onMouseWheel.bind(this), {
+        passive: true,
+      });
+    }, 7000);
   },
   onRenderLoop: function () {
     this.scene.render();
