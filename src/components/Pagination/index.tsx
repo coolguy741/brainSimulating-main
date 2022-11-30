@@ -8,7 +8,7 @@ const Pagination = ({ total } : any) => {
     return (
         <div className="w-full flex flex-col space-y-2 items-center justify-center absolute bottom-4">
             {
-                curPage < total - 1 && <div className="mouse_scroll scale-75 mb-[110px]">
+                curPage < total - 1 && <div className="mouse_scroll scale-75 mb-[140px]">
                     <div className="mouse">
                         <div className="wheel"></div>
                     </div>
@@ -27,6 +27,7 @@ const Pagination = ({ total } : any) => {
                 })                
             }
             </div>
+            <p className="text-center text-sm text-white">This presentation is confidential and may be privileged. All rights reserved Sanguine Agency 2022 ©</p>
         </div>
     )
 };
