@@ -236,7 +236,7 @@ BabylonScene.prototype = {
     // this.brainMaterial.subSurface.tintColor =
     //   BABYLON.Color3.FromHexString("#ff00dc").toLinearSpace();
     // this.brainMaterial.subSurface.tintColorAtDistance = 0;
-    // this.brainMaterial.subSurface.volumeIndexOfRefraction = 3;
+    // this.brainMaterial.subSurface.volumeIndexOfRefraction = 2;
     var tl = gsap.timeline({
       onComplete: this.onAnimation1Complete.bind(this),
     });
@@ -337,12 +337,12 @@ BabylonScene.prototype = {
     // this.brainMaterial.clearCoat.indexOfRefraction = 2;
     // this.brainMaterial.ambientTextureStrength = 1;
     // this.brainMaterial.ambientTexture.level = 1.05;
-    // this.lightmapBrainTex = new BABYLON.Texture(
-    //   "brain3dapplication/assets/images/brain_diffuselighting_invert_x1024.jpg"
-    // );
-    // this.brainMaterial.lightmapTexture = this.lightmapBrainTex;
-    // this.brainMaterial.lightmapTexture.level = 0.7;
-    // this.brainMaterial.lightmapTexture.vScale = -1;
+    this.lightmapBrainTex = new BABYLON.Texture(
+      "brain3dapplication/assets/images/brain_diffuselighting_invert_x1024.jpg"
+    );
+    this.brainMaterial.lightmapTexture = this.lightmapBrainTex;
+    this.brainMaterial.lightmapTexture.level = 1;
+    this.brainMaterial.lightmapTexture.vScale = -1;
 
     this.t2 = gsap.to(this.brain.scaling, {
       x: 1.005,

@@ -1,6 +1,5 @@
+
 import styled from 'styled-components';
-import Header from '../../components/Header';
-import Intro from '../../components/Intro';
 
 const Wrapper = styled.div`
     background-color: #7db5d5;
@@ -8,15 +7,22 @@ const Wrapper = styled.div`
 
 export const Agreement = () => {
     return (
-            <Wrapper className={`w-screen h-screen bg-transparent flex flex-row w-full, h-full`}>
-                <div className='base-2/5'>
-                    asdfa
+        <Wrapper className={`w-screen h-screen p-6`}>
+            <div className='flex'>
+                <div className='basis-2/5'>
+                    <p>WE'RE ABOUT TO HAND OUR precious BABY to you.</p>
+                    <p>BY SIGNING THIS NON-DISCLOSURE AGREEMENT YOU AGREE not to share our BABY with ANYONE ELSE.</p>
+
                 </div>
-                <div className='base-3/5'>
+                <div className='basis-3/5'>
                     asfdjl
                 </div>
-            </Wrapper>
+            </div>
+        </Wrapper>
     )
 }
+
+
+
 
 export default Agreement
