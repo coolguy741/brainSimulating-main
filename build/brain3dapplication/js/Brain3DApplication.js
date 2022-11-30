@@ -124,7 +124,7 @@ Brain3DApplication.prototype = {
     this.babylonScene.turnOffLight();
   },
 
-  resetBrain: function() {
+  resetBrain: function () {
     this.babylonScene.resetBrain();
   },
 

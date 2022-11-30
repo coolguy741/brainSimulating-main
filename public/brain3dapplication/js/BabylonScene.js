@@ -86,85 +86,82 @@ BabylonScene.prototype = {
   },
 
   setBloom: function (state) {
-    if (this.defaultPLR) {
-      this.defaultPLR.bloomEnabled = state;
-      this.defaultPLR.bloomThreshold = 0.4;
-      this.defaultPLR.bloomWeight = 5;
-      this.defaultPLR.bloomKernel = 64;
-      this.defaultPLR.bloomScale = 2;
-    }
+    // if (this.defaultPLR) {
+    //   this.defaultPLR.bloomEnabled = state;
+    //   this.defaultPLR.bloomThreshold = 0.4;
+    //   this.defaultPLR.bloomWeight = 5;
+    //   this.defaultPLR.bloomKernel = 64;
+    //   this.defaultPLR.bloomScale = 2;
+    // }
   },
 
   setdefaultPP: function (state) {
-    if (state === true) {
-      this.defaultPLR = new BABYLON.DefaultRenderingPipeline(
-        "defaultPipeline",
-        true,
-        this.scene,
-        [this.camera]
-      );
-
-      this.defaultPLR.imageProcessingEnabled = true;
-      this.defaultPLR.samples = 4;
-      this.defaultPLR.fxaaEnabled = true;
-      this.defaultPLR.imageProcessing.colorCurvesEnabled = false;
-      this.defaultPLR.imageProcessing.vignetteEnabled = true;
-      this.defaultPLR.imageProcessing.vignettecentreY = 0.4;
-      this.defaultPLR.imageProcessing.vignetteWeight = 4;
-      // this.defaultPLR.imageProcessing.vignetteColor = BABYLON.Color3.FromHexString("#13EBF7").toLinearSpace();
-      this.defaultPLR.imageProcessing.vignetteColor =
-        BABYLON.Color3.FromHexString("#b7adb6").toLinearSpace();
-
-      this.defaultPLR.imageProcessing.colorGradingEnabled = false;
-      this.defaultPLR.imageProcessing.contrast = 1.9;
-      this.defaultPLR.imageProcessing.exposure = 1;
-      this.defaultPLR.imageProcessing.toneMappingEnabled = false;
-      this.defaultPLR.imageProcessing.toneMappingType =
-        BABYLON.ImageProcessingConfiguration.TONEMAPPING_ACES;
-    } else {
-      if (this.defaultPLR !== null && this.defaultPLR !== undefined) {
-        this.defaultPLR.dispose();
-      }
-    }
+    // if (state === true) {
+    //   this.defaultPLR = new BABYLON.DefaultRenderingPipeline(
+    //     "defaultPipeline",
+    //     true,
+    //     this.scene,
+    //     [this.camera]
+    //   );
+    //   this.defaultPLR.imageProcessingEnabled = true;
+    //   this.defaultPLR.samples = 4;
+    //   this.defaultPLR.fxaaEnabled = true;
+    //   this.defaultPLR.imageProcessing.colorCurvesEnabled = false;
+    //   this.defaultPLR.imageProcessing.vignetteEnabled = true;
+    //   this.defaultPLR.imageProcessing.vignettecentreY = 0.4;
+    //   this.defaultPLR.imageProcessing.vignetteWeight = 4;
+    //   // this.defaultPLR.imageProcessing.vignetteColor = BABYLON.Color3.FromHexString("#13EBF7").toLinearSpace();
+    //   this.defaultPLR.imageProcessing.vignetteColor =
+    //     BABYLON.Color3.FromHexString("#b7adb6").toLinearSpace();
+    //   this.defaultPLR.imageProcessing.colorGradingEnabled = false;
+    //   this.defaultPLR.imageProcessing.contrast = 1.9;
+    //   this.defaultPLR.imageProcessing.exposure = 1;
+    //   this.defaultPLR.imageProcessing.toneMappingEnabled = false;
+    //   this.defaultPLR.imageProcessing.toneMappingType =
+    //     BABYLON.ImageProcessingConfiguration.TONEMAPPING_ACES;
+    // } else {
+    //   if (this.defaultPLR !== null && this.defaultPLR !== undefined) {
+    //     this.defaultPLR.dispose();
+    //   }
+    // }
   },
 
   setSSAO: function (state) {
-    if (state === true) {
-      if (BABYLON.SSAO2RenderingPipeline.IsSupported) {
-        // Create SSAO and configure all properties (for the example)
-        var ssaoRatio = {
-          ssaoRatio: 0.5, // Ratio of the SSAO post-process, in a lower resolution
-          blurRatio: 0.5, // Ratio of the combine post-process (combines the SSAO and the scene)
-        };
-        this.SSAOPipeline = new BABYLON.SSAO2RenderingPipeline(
-          "ssao",
-          this.scene,
-          ssaoRatio
-        );
-        this.SSAOPipeline.radius = 2;
-        this.SSAOPipeline.totalStrength = 1;
-        this.SSAOPipeline.expensiveBlur = true;
-        this.SSAOPipeline.samples = 32;
-        this.SSAOPipeline.maxZ = 250;
-        // Attach camera to the SSAO render pipeline
-        this.scene.postProcessRenderPipelineManager.attachCamerasToRenderPipeline(
-          "ssao",
-          this.camera
-        );
-        this.scene.postProcessRenderPipelineManager.enableEffectInPipeline(
-          "ssao",
-          this.SSAOPipeline.SSAOCombineRenderEffect,
-          this.camera
-        );
-
-        //fix for ssao affecting transparent objects
-        this.scene.enableGeometryBufferRenderer().renderTransparentMeshes = false;
-      }
-    } else {
-      if (this.SSAOPipeline !== null && this.SSAOPipeline !== undefined) {
-        this.SSAOPipeline.dispose();
-      }
-    }
+    // if (state === true) {
+    //   if (BABYLON.SSAO2RenderingPipeline.IsSupported) {
+    //     // Create SSAO and configure all properties (for the example)
+    //     var ssaoRatio = {
+    //       ssaoRatio: 0.5, // Ratio of the SSAO post-process, in a lower resolution
+    //       blurRatio: 0.5, // Ratio of the combine post-process (combines the SSAO and the scene)
+    //     };
+    //     this.SSAOPipeline = new BABYLON.SSAO2RenderingPipeline(
+    //       "ssao",
+    //       this.scene,
+    //       ssaoRatio
+    //     );
+    //     this.SSAOPipeline.radius = 2;
+    //     this.SSAOPipeline.totalStrength = 1;
+    //     this.SSAOPipeline.expensiveBlur = true;
+    //     this.SSAOPipeline.samples = 32;
+    //     this.SSAOPipeline.maxZ = 250;
+    //     // Attach camera to the SSAO render pipeline
+    //     this.scene.postProcessRenderPipelineManager.attachCamerasToRenderPipeline(
+    //       "ssao",
+    //       this.camera
+    //     );
+    //     this.scene.postProcessRenderPipelineManager.enableEffectInPipeline(
+    //       "ssao",
+    //       this.SSAOPipeline.SSAOCombineRenderEffect,
+    //       this.camera
+    //     );
+    //     //fix for ssao affecting transparent objects
+    //     this.scene.enableGeometryBufferRenderer().renderTransparentMeshes = false;
+    //   }
+    // } else {
+    //   if (this.SSAOPipeline !== null && this.SSAOPipeline !== undefined) {
+    //     this.SSAOPipeline.dispose();
+    //   }
+    // }
   },
 
   load: function (url) {
@@ -215,11 +212,11 @@ BabylonScene.prototype = {
     console.log("Hello");
 
     this.brainMaterial = this.scene.getMaterialByName("brain_mass");
-    this.m1 = this.scene.getMaterialByName("dorsolateral_prefrontal_cortex");
-    this.m2 = this.scene.getMaterialByName("medial_prefrontal_cortex");
+    // this.m1 = this.scene.getMaterialByName("dorsolateral_prefrontal_cortex");
+    // this.m2 = this.scene.getMaterialByName("medial_prefrontal_cortex");
 
-    this.m1.depthFunction = BABYLON.Engine.NEVER;
-    this.m2.depthFunction = BABYLON.Engine.NEVER;
+    // this.m1.depthFunction = BABYLON.Engine.NEVER;
+    // this.m2.depthFunction = BABYLON.Engine.NEVER;
 
     // this.brainMaterial.transparencyMode = 2;
     // this.brainMaterial.alpha = 1;
@@ -390,7 +387,7 @@ BabylonScene.prototype = {
     //   BABYLON.Color3.FromHexString("#FF00A0").toLinearSpace();
     // this.brainMaterial.emissiveIntensity = 0;
     this.brainIdleAnimation = gsap.from(this.brainMaterial, {
-      emissiveIntensity: 0.8 * this.emissiveIntensityScalarForBrainIdle,
+      // emissiveIntensity: 0.8 * this.emissiveIntensityScalarForBrainIdle,
       duration: 4,
       ease: Expo.easeOut,
       repeat: -1,
@@ -436,7 +433,7 @@ BabylonScene.prototype = {
     if (this.state !== ANIMATION_STATE.NONE) return;
     if (this.lightOn) return;
     this.lightOn = true;
-    // this.setdefaultPP(true);
+    // /this.setdefaultPP(true);
     this.setGlowLayer(true);
   },
 
@@ -493,7 +490,7 @@ BabylonScene.prototype = {
       );
       system.updateSpeed = 0.01;
       system.targetStopDuration = 1;
-      system.color1 = BABYLON.Color4.FromHexString("#FFEAFFFF").toLinearSpace();
+      // system.color1 = BABYLON.Color4.FromHexString("#FFEAFFFF").toLinearSpace();
 
       system.emitRate = 30;
       system.start();
@@ -549,7 +546,7 @@ BabylonScene.prototype = {
     this.scene.environmentTexture.rotationY = 3.913;
     this.scene.environmentIntensity = 1.45;
     // this.changeBackgroundColor("#437EAA");
-    this.changeBackgroundColor("#ffffff");
+    this.changeBackgroundColor("#AAAAAA");
     window.addEventListener("keydown", this.keyListener);
     this.engine.runRenderLoop(this.onRenderLoop.bind(this));
     window.addEventListener("resize", this.onWindowResize.bind(this));
