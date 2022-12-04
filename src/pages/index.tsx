@@ -22,8 +22,8 @@ export const Pages = () => {
                 exitAnimation={""}
             >
                 <Routes location={location}>
-                    <Route path="/agreement" element={<Agreement />} />
-                    <Route path="/" element={<Home />} />
+                    <Route path="/" element={<Agreement />} />
+                    <Route path="/home" element={<Home />} />
                     <Route path="/brain" element={<Brain />} />
                     <Route path="/encourage" element={<Encourage />} />
                     <Route path="/end" element={<EndLine />} />

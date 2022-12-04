@@ -6,7 +6,8 @@ const Pagination = ({ total } : any) => {
     const [ curPage ] = pageContext;
     const items = Array(total).fill(0);
     return (
-        <div className="w-full flex flex-col space-y-2 items-center justify-center absolute bottom-4">
+        <>
+        {curPage > 1 && <div className="w-full flex flex-col space-y-2 items-center justify-center absolute bottom-4">
             {
                 curPage < total - 1 && <div className="mouse_scroll scale-75 mb-[140px]">
                     <div className="mouse">
@@ -28,7 +29,8 @@ const Pagination = ({ total } : any) => {
             }
             </div>
             <p className="text-center text-sm text-white">This presentation is confidential and may be privileged. All rights reserved Sanguine Agency 2022 ©</p>
-        </div>
+        </div>}
+        </>
     )
 };
 
