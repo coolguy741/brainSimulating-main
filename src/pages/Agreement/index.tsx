@@ -45,9 +45,9 @@ export const Agreement = () => {
     }
 
     return (
-        <Wrapper className={`w-screen h-screen py-16 px-14 overflow-auto`}>
+        <Wrapper className={`w-screen h-screen py-10 px-14 overflow-auto`}>
             <div className='flex text-white font-Roboto'>
-                <div className='basis-2/5 overflow-auto'>
+                <div className='basis-2/5 overflow-auto pr-16'>
                     <div className='font-black text-6xl uppercase'>
                         <h4 className='pb-16'>
                             WE'RE ABOUT<br/>
