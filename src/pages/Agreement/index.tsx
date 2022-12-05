@@ -47,12 +47,24 @@ export const Agreement = () => {
     return (
         <Wrapper className={`w-screen h-screen py-10 px-14 overflow-auto`}>
             <div className='flex text-white font-Roboto'>
-                <div className='basis-2/5 pr-28 overflow-auto'>
+                <div className='basis-2/5 overflow-auto'>
                     <div className='font-black text-6xl uppercase'>
-                        <h4 className='pb-16 pr-40'>WE'RE ABOUT TO HAND OUR precious BABY to you.</h4>
-                        <h4 className='pb-16 pr-4'>BY SIGNING THIS NON-DISCLOSURE AGREEMENT YOU AGREE not to share our BABY with ANYONE ELSE.</h4>
+                        <h4 className='pb-16'>
+                            WE'RE ABOUT<br/>
+                            TO HAND OUR<br/>
+                            precious BABY<br/> 
+                            to you.
+                        </h4>
+                        <h4 className='pb-16'>
+                            BY SIGNING THIS<br/> 
+                            NON-DISCLOSURE<br/>
+                            AGREEMENT YOU<br/>
+                            AGREE not to<br/>
+                            share our BABY<br/>
+                            with ANYONE ELSE.
+                        </h4>
                     </div>
-                    <input type="text" value = {tourist.email} className='placeholder:italic placeholder:text-white rounded-full border-white bg-transparent border-2 text-4xl leading-loose shadow-xl w-full focus:outline-none  focus:border-sky-500 focus:ring-sky-500 focus:ring-1 indent-7' placeholder='Input your email to continue' name="email" onChange={(e) => setTourist({...tourist, email: e.target.value})} onKeyDown={onHandleKeyDown}/>
+                    <input type="text" value = {tourist.email} className='placeholder:italic placeholder:text-white rounded-full border-white bg-transparent border-2 text-4xl leading-loose shadow-xl w-full focus:outline-none  focus:border-sky-500 focus:ring-sky-500 focus:ring-1 indent-7 max-w-xl' placeholder='Input your email to continue' name="email" onChange={(e) => setTourist({...tourist, email: e.target.value})} onKeyDown={onHandleKeyDown}/>
                 </div>
                 <div className='basis-3/5 text-xl leading-6 tracking-normal h-full '>
                     <p>
