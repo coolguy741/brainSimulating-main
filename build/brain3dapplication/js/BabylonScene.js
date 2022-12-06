@@ -86,82 +86,82 @@ BabylonScene.prototype = {
   },
 
   setBloom: function (state) {
-    // if (this.defaultPLR) {
-    //   this.defaultPLR.bloomEnabled = state;
-    //   this.defaultPLR.bloomThreshold = 0.4;
-    //   this.defaultPLR.bloomWeight = 5;
-    //   this.defaultPLR.bloomKernel = 64;
-    //   this.defaultPLR.bloomScale = 2;
-    // }
+    if (this.defaultPLR) {
+      this.defaultPLR.bloomEnabled = state;
+      this.defaultPLR.bloomThreshold = 0.4;
+      this.defaultPLR.bloomWeight = 5;
+      this.defaultPLR.bloomKernel = 64;
+      this.defaultPLR.bloomScale = 2;
+    }
   },
 
   setdefaultPP: function (state) {
-    // if (state === true) {
-    //   this.defaultPLR = new BABYLON.DefaultRenderingPipeline(
-    //     "defaultPipeline",
-    //     true,
-    //     this.scene,
-    //     [this.camera]
-    //   );
-    //   this.defaultPLR.imageProcessingEnabled = true;
-    //   this.defaultPLR.samples = 4;
-    //   this.defaultPLR.fxaaEnabled = true;
-    //   this.defaultPLR.imageProcessing.colorCurvesEnabled = false;
-    //   this.defaultPLR.imageProcessing.vignetteEnabled = true;
-    //   this.defaultPLR.imageProcessing.vignettecentreY = 0.4;
-    //   this.defaultPLR.imageProcessing.vignetteWeight = 4;
-    //   // this.defaultPLR.imageProcessing.vignetteColor = BABYLON.Color3.FromHexString("#13EBF7").toLinearSpace();
-    //   this.defaultPLR.imageProcessing.vignetteColor =
-    //     BABYLON.Color3.FromHexString("#b7adb6").toLinearSpace();
-    //   this.defaultPLR.imageProcessing.colorGradingEnabled = false;
-    //   this.defaultPLR.imageProcessing.contrast = 1.9;
-    //   this.defaultPLR.imageProcessing.exposure = 1;
-    //   this.defaultPLR.imageProcessing.toneMappingEnabled = false;
-    //   this.defaultPLR.imageProcessing.toneMappingType =
-    //     BABYLON.ImageProcessingConfiguration.TONEMAPPING_ACES;
-    // } else {
-    //   if (this.defaultPLR !== null && this.defaultPLR !== undefined) {
-    //     this.defaultPLR.dispose();
-    //   }
-    // }
+    if (state === true) {
+      this.defaultPLR = new BABYLON.DefaultRenderingPipeline(
+        "defaultPipeline",
+        true,
+        this.scene,
+        [this.camera]
+      );
+      this.defaultPLR.imageProcessingEnabled = true;
+      this.defaultPLR.samples = 4;
+      this.defaultPLR.fxaaEnabled = true;
+      this.defaultPLR.imageProcessing.colorCurvesEnabled = false;
+      this.defaultPLR.imageProcessing.vignetteEnabled = true;
+      this.defaultPLR.imageProcessing.vignettecentreY = 0.4;
+      this.defaultPLR.imageProcessing.vignetteWeight = 4;
+      // this.defaultPLR.imageProcessing.vignetteColor = BABYLON.Color3.FromHexString("#13EBF7").toLinearSpace();
+      this.defaultPLR.imageProcessing.vignetteColor =
+        BABYLON.Color3.FromHexString("#b7adb6").toLinearSpace();
+      this.defaultPLR.imageProcessing.colorGradingEnabled = false;
+      this.defaultPLR.imageProcessing.contrast = 1.9;
+      this.defaultPLR.imageProcessing.exposure = 1;
+      this.defaultPLR.imageProcessing.toneMappingEnabled = false;
+      this.defaultPLR.imageProcessing.toneMappingType =
+        BABYLON.ImageProcessingConfiguration.TONEMAPPING_ACES;
+    } else {
+      if (this.defaultPLR !== null && this.defaultPLR !== undefined) {
+        this.defaultPLR.dispose();
+      }
+    }
   },
 
   setSSAO: function (state) {
-    // if (state === true) {
-    //   if (BABYLON.SSAO2RenderingPipeline.IsSupported) {
-    //     // Create SSAO and configure all properties (for the example)
-    //     var ssaoRatio = {
-    //       ssaoRatio: 0.5, // Ratio of the SSAO post-process, in a lower resolution
-    //       blurRatio: 0.5, // Ratio of the combine post-process (combines the SSAO and the scene)
-    //     };
-    //     this.SSAOPipeline = new BABYLON.SSAO2RenderingPipeline(
-    //       "ssao",
-    //       this.scene,
-    //       ssaoRatio
-    //     );
-    //     this.SSAOPipeline.radius = 2;
-    //     this.SSAOPipeline.totalStrength = 1;
-    //     this.SSAOPipeline.expensiveBlur = true;
-    //     this.SSAOPipeline.samples = 32;
-    //     this.SSAOPipeline.maxZ = 250;
-    //     // Attach camera to the SSAO render pipeline
-    //     this.scene.postProcessRenderPipelineManager.attachCamerasToRenderPipeline(
-    //       "ssao",
-    //       this.camera
-    //     );
-    //     this.scene.postProcessRenderPipelineManager.enableEffectInPipeline(
-    //       "ssao",
-    //       this.SSAOPipeline.SSAOCombineRenderEffect,
-    //       this.camera
-    //     );
-    //     //fix for ssao affecting transparent objects
-    //     this.scene.enableGeometryBufferRenderer().renderTransparentMeshes = false;
-    //   }
-    // } else {
-    //   if (this.SSAOPipeline !== null && this.SSAOPipeline !== undefined) {
-    //     this.SSAOPipeline.dispose();
-    //   }
-    // }
+    if (state === true) {
+      if (BABYLON.SSAO2RenderingPipeline.IsSupported) {
+        // Create SSAO and configure all properties (for the example)
+        var ssaoRatio = {
+          ssaoRatio: 0.5, // Ratio of the SSAO post-process, in a lower resolution
+          blurRatio: 0.5, // Ratio of the combine post-process (combines the SSAO and the scene)
+        };
+        this.SSAOPipeline = new BABYLON.SSAO2RenderingPipeline(
+          "ssao",
+          this.scene,
+          ssaoRatio
+        );
+        this.SSAOPipeline.radius = 2;
+        this.SSAOPipeline.totalStrength = 1;
+        this.SSAOPipeline.expensiveBlur = true;
+        this.SSAOPipeline.samples = 32;
+        this.SSAOPipeline.maxZ = 250;
+        // Attach camera to the SSAO render pipeline
+        this.scene.postProcessRenderPipelineManager.attachCamerasToRenderPipeline(
+          "ssao",
+          this.camera
+        );
+        this.scene.postProcessRenderPipelineManager.enableEffectInPipeline(
+          "ssao",
+          this.SSAOPipeline.SSAOCombineRenderEffect,
+          this.camera
+        );
+        //fix for ssao affecting transparent objects
+        this.scene.enableGeometryBufferRenderer().renderTransparentMeshes = false;
+      }
+    } else {
+      if (this.SSAOPipeline !== null && this.SSAOPipeline !== undefined) {
+        this.SSAOPipeline.dispose();
+      }
+    }
   },
 
   load: function (url) {
@@ -184,10 +184,8 @@ BabylonScene.prototype = {
 
     this.postLoad();
   },
-
   postLoad: function () {
-    console.log("postload");
-
+    this.setdefaultPP(true);
     this.turnOffLight();
     this.initialAngle = this.brain.rotation.clone();
 
@@ -196,47 +194,46 @@ BabylonScene.prototype = {
       var section = this.application.brainSectionData[prop];
       section.node = this.scene.getNodeByName(section.nodeKey);
       section.material = this.scene.getMaterialByName(section.materialKey);
-      // if (section.material) {
-      //   section.material.albedoColor = BABYLON.Color3.FromHexString(
-      //     section.highlightColor
-      //   ).toLinearSpace();
-      //   section.material.emissiveColor = section.material.albedoColor;
-      //   section.material.emissiveIntensity = 0;
-      // }
+      if (section.material) {
+        section.material.albedoColor = BABYLON.Color3.FromHexString(
+          section.highlightColor
+        ).toLinearSpace();
+        section.material.emissiveColor = section.material.albedoColor;
+        section.material.emissiveIntensity = 0;
+      }
       if (section.handleNodeVisibilityWithEffect) {
         section.material.transparencyMode = 2;
         section.material.alpha = 0;
       }
     }
 
-    console.log("Hello");
-
     this.brainMaterial = this.scene.getMaterialByName("brain_mass");
-    // this.m1 = this.scene.getMaterialByName("dorsolateral_prefrontal_cortex");
-    // this.m2 = this.scene.getMaterialByName("medial_prefrontal_cortex");
+    this.m1 = this.scene.getMaterialByName("dorsolateral_prefrontal_cortex");
+    this.m2 = this.scene.getMaterialByName("medial_prefrontal_cortex");
 
-    // this.m1.depthFunction = BABYLON.Engine.NEVER;
-    // this.m2.depthFunction = BABYLON.Engine.NEVER;
+    this.m1.depthFunction = BABYLON.Engine.NEVER;
+    this.m2.depthFunction = BABYLON.Engine.NEVER;
 
-    // this.brainMaterial.transparencyMode = 2;
-    // this.brainMaterial.alpha = 1;
-    // this.brainMaterial.metallic = 0;
-    // this.brainMaterial.needDepthPrePass = true;
+    this.brainMaterial.transparencyMode = 3;
+    this.brainMaterial.alpha = 1;
+    this.brainMaterial.metallic = 0;
+    this.brainMaterial.needDepthPrePass = true;
 
-    // this.brainMaterial.clearCoat.isEnabled = false;
-    // this.brainMaterial.ambientTextureStrength = 0;
-
-    // this.brainMaterial.albedoColor = BABYLON.Color3.FromHexString("#ff00dc").toLinearSpace();
+    this.brainMaterial.clearCoat.isEnabled = false;
+    this.brainMaterial.ambientTextureStrength = 0;
 
     // this.brainMaterial.albedoColor =
-    //   BABYLON.Color3.FromHexString("#ffffff").toLinearSpace();
-    // this.brainMaterial.emissiveColor =
-    //   BABYLON.Color3.FromHexString("#1B2729").toLinearSpace();
-    // this.brainMaterial.subSurface.isRefractionEnabled = false;
-    // this.brainMaterial.subSurface.tintColor =
-    //   BABYLON.Color3.FromHexString("#ff00dc").toLinearSpace();
-    // this.brainMaterial.subSurface.tintColorAtDistance = 0;
-    // this.brainMaterial.subSurface.volumeIndexOfRefraction = 2;
+    //  BABYLON.Color3.FromHexString("#ff00dc").toLinearSpace();
+
+    this.brainMaterial.albedoColor =
+      BABYLON.Color3.FromHexString("#ffffff").toLinearSpace();
+    this.brainMaterial.emissiveColor =
+      BABYLON.Color3.FromHexString("#1B2729").toLinearSpace();
+    this.brainMaterial.subSurface.isRefractionEnabled = false;
+    this.brainMaterial.subSurface.tintColor =
+      BABYLON.Color3.FromHexString("#ff00dc").toLinearSpace();
+    this.brainMaterial.subSurface.tintColorAtDistance = 0;
+    this.brainMaterial.subSurface.volumeIndexOfRefraction = 3;
     var tl = gsap.timeline({
       onComplete: this.onAnimation1Complete.bind(this),
     });
@@ -271,7 +268,6 @@ BabylonScene.prototype = {
 
       ob.position1 = item.position;
 
-      console.log(this.primaryPositions);
       this.primaryPositions.push(item.position.clone());
 
       ob.position2 = ob.position1.add(ob.direction1.scale(0.2));
@@ -310,38 +306,41 @@ BabylonScene.prototype = {
     // this.camera.autoRotationBehavior.idleRotationSpeed = -0.1;
     //this.camera.autoRotationBehavior.targetAlpha = 2.3633;
 
-    // this.brainMaterial.albedoColor =
-    //   BABYLON.Color3.FromHexString("#FF00E6").toLinearSpace();
-    // this.brainMaterial.emissiveColor =
-    //   BABYLON.Color3.FromHexString("#FF00E6").toLinearSpace();
-    // this.brainMaterial.diffuseColor =
-    //   BABYLON.Color3.FromHexString("#FF00E6").toLinearSpace();
-    // this.brainMaterial.tintColor =
-    //   BABYLON.Color3.FromHexString("#FF00E6").toLinearSpace();
-    // this.brainMaterial.metallic = 0;
-    // this.brainMaterial.roughness = 0.25;
-    // this.brainMaterial.alpha = 0.93;
+    this.brainMaterial.albedoColor =
+      BABYLON.Color3.FromHexString("#FF00E6").toLinearSpace();
+    this.brainMaterial.emissiveColor =
+      BABYLON.Color3.FromHexString("#FF00E6").toLinearSpace();
+    this.brainMaterial.diffuseColor =
+      BABYLON.Color3.FromHexString("#FF00E6").toLinearSpace();
+    this.brainMaterial.tintColor =
+      BABYLON.Color3.FromHexString("#FF00E6").toLinearSpace();
+    this.brainMaterial.metallic = 0;
+    this.brainMaterial.roughness = 0.25;
+    this.brainMaterial.alpha = 0.93;
     // this.brainMaterial.isRefractionEnabled = true;
-    // this.brainMaterial.indexOfRefraction = 0.1;
+    // this.brainMaterial.indexOfRefraction = 1;
 
-    // this.brainMaterial.subSurface.isRefractionEnabled = true;
-    // this.brainMaterial.subSurface.tintColor = BABYLON.Color3.FromHexString("#FF00E6").toLinearSpace();
-    // this.brainMaterial.subSurface.diffuseColor = BABYLON.Color3.FromHexString("#FF00A0").toLinearSpace();
-    // this.brainMaterial.subSurface.emissiveColor = BABYLON.Color3.FromHexString("#FF00A0").toLinearSpace();
+    // this.brainMaterial.subSurface.isRefractionEnabled = false;
+    // this.brainMaterial.subSurface.tintColor =
+    //  BABYLON.Color3.FromHexString("#FF00E6").toLinearSpace();
+    // this.brainMaterial.subSurface.diffuseColor =
+    // BABYLON.Color3.FromHexString("#FF00A0").toLinearSpace();
+    // this.brainMaterial.subSurface.emissiveColor =
+    //   BABYLON.Color3.FromHexString("#FF00A0").toLinearSpace();
     // this.brainMaterial.subSurface.tintColorAtDistance = 500;
     // this.brainMaterial.subSurface.volumeIndexOfRefraction = 15;
 
-    // this.brainMaterial.clearCoat.isEnabled = false;
-    // this.brainMaterial.clearCoat.intensity = 0.2;
-    // this.brainMaterial.clearCoat.roughness = 0.9;
-    // this.brainMaterial.clearCoat.indexOfRefraction = 2;
-    // this.brainMaterial.ambientTextureStrength = 1;
+    this.brainMaterial.clearCoat.isEnabled = false;
+    this.brainMaterial.clearCoat.intensity = 0.2;
+    this.brainMaterial.clearCoat.roughness = 0.9;
+    this.brainMaterial.clearCoat.indexOfRefraction = 2;
+    this.brainMaterial.ambientTextureStrength = 1;
     // this.brainMaterial.ambientTexture.level = 1.05;
     this.lightmapBrainTex = new BABYLON.Texture(
       "brain3dapplication/assets/images/brain_diffuselighting_invert_x1024.jpg"
     );
     this.brainMaterial.lightmapTexture = this.lightmapBrainTex;
-    this.brainMaterial.lightmapTexture.level = 1;
+    this.brainMaterial.lightmapTexture.level = 0.3;
     this.brainMaterial.lightmapTexture.vScale = -1;
 
     this.t2 = gsap.to(this.brain.scaling, {
@@ -357,9 +356,9 @@ BabylonScene.prototype = {
     var glowTween = gsap.timeline({ repeat: 1, yoyo: true });
     for (var prop in this.application.brainSectionData) {
       let item = this.application.brainSectionData[prop];
-      // item.material.emissiveIntensity = 0;
+      item.material.emissiveIntensity = 0;
       if (item.handleNodeVisibilityWithEffect) {
-        // item.material.alpha = 0;
+        item.material.alpha = 0;
         glowTween.to(
           item.material,
           {
@@ -383,11 +382,11 @@ BabylonScene.prototype = {
       }
     }
 
-    // this.brainMaterial.emissiveColor =
-    //   BABYLON.Color3.FromHexString("#FF00A0").toLinearSpace();
-    // this.brainMaterial.emissiveIntensity = 0;
+    this.brainMaterial.emissiveColor =
+      BABYLON.Color3.FromHexString("#FF00A0").toLinearSpace();
+    this.brainMaterial.emissiveIntensity = 0;
     this.brainIdleAnimation = gsap.from(this.brainMaterial, {
-      // emissiveIntensity: 0.8 * this.emissiveIntensityScalarForBrainIdle,
+      emissiveIntensity: 0.8 * this.emissiveIntensityScalarForBrainIdle,
       duration: 4,
       ease: Expo.easeOut,
       repeat: -1,
@@ -433,14 +432,12 @@ BabylonScene.prototype = {
     if (this.state !== ANIMATION_STATE.NONE) return;
     if (this.lightOn) return;
     this.lightOn = true;
-    // /this.setdefaultPP(true);
     this.setGlowLayer(true);
   },
 
   turnOffLight: function () {
     if (!this.lightOn) return;
     this.lightOn = false;
-    // this.setdefaultPP(false);
     this.setGlowLayer(false);
   },
 
@@ -483,14 +480,14 @@ BabylonScene.prototype = {
       false
     ).then((system) => {
       this.questionParticles = system;
-      //system.emitter = this.brain;
+      system.emitter = this.brain;
       system.particleTexture = new BABYLON.Texture(
         "./brain3dapplication/assets/images/question_particle.png",
         this.scene
       );
       system.updateSpeed = 0.01;
       system.targetStopDuration = 1;
-      // system.color1 = BABYLON.Color4.FromHexString("#FFEAFFFF").toLinearSpace();
+      system.color1 = BABYLON.Color4.FromHexString("#FFEAFFFF").toLinearSpace();
 
       system.emitRate = 30;
       system.start();
@@ -545,8 +542,7 @@ BabylonScene.prototype = {
     this.scene.environmentTexture = this.hdrTexture;
     this.scene.environmentTexture.rotationY = 3.913;
     this.scene.environmentIntensity = 1.45;
-    // this.changeBackgroundColor("#437EAA");
-    this.changeBackgroundColor("#AAAAAA");
+    this.changeBackgroundColor("#437EAA");
     window.addEventListener("keydown", this.keyListener);
     this.engine.runRenderLoop(this.onRenderLoop.bind(this));
     window.addEventListener("resize", this.onWindowResize.bind(this));

@@ -65,6 +65,7 @@ Brain3DApplication.prototype = {
       true,
     ];
     var emmissiveScalar = [8, 8, 8, 8, 8, 8];
+    var emissiveIntensity = [1, 1, 1, 1, 1, 1];
     this.sections = {};
     for (var i = 0; i < sectionNames.length; i++) {
       var name = sectionNames[i];
@@ -76,6 +77,7 @@ Brain3DApplication.prototype = {
       section.handleNodeVisibilityWithEffect =
         handleNodeVisibilityWithEffect[i];
       section.emmissiveScalar = emmissiveScalar[i];
+      section.emissiveIntensity = emissiveIntensity[i];
     }
   },
 
