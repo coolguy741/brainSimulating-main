@@ -109,7 +109,7 @@ BabylonScene.prototype = {
       this.defaultPLR.imageProcessing.colorCurvesEnabled = false;
       this.defaultPLR.imageProcessing.vignetteEnabled = true;
       this.defaultPLR.imageProcessing.vignettecentreY = 0.4;
-      this.defaultPLR.imageProcessing.vignetteWeight = 4;
+      this.defaultPLR.imageProcessing.vignetteWeight = 1;
       // this.defaultPLR.imageProcessing.vignetteColor = BABYLON.Color3.FromHexString("#13EBF7").toLinearSpace();
       this.defaultPLR.imageProcessing.vignetteColor =
         BABYLON.Color3.FromHexString("#b7adb6").toLinearSpace();
@@ -542,7 +542,8 @@ BabylonScene.prototype = {
     this.scene.environmentTexture = this.hdrTexture;
     this.scene.environmentTexture.rotationY = 3.913;
     this.scene.environmentIntensity = 1.45;
-    this.changeBackgroundColor("#437EAA");
+    // this.changeBackgroundColor("#437EAA");
+    this.changeBackgroundColor("#142532");
     window.addEventListener("keydown", this.keyListener);
     this.engine.runRenderLoop(this.onRenderLoop.bind(this));
     window.addEventListener("resize", this.onWindowResize.bind(this));
