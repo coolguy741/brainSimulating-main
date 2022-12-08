@@ -1,4 +1,4 @@
-const TARGET_DISTANCE = 0.49; // 0.3
+const TARGET_DISTANCE = 0.35; // 0.3
 const K_MOVE = 0.01;
 const TARGET_ANGLE = 3.141592 * 2;
 const K_ANGLE = 0.1;
